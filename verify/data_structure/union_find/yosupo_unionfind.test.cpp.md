@@ -30,7 +30,7 @@ data:
   isVerificationFile: true
   path: verify/data_structure/union_find/yosupo_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2023-09-26 01:32:43+09:00'
+  timestamp: '2023-09-26 01:43:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/union_find/yosupo_unionfind.test.cpp

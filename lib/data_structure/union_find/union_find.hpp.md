@@ -21,14 +21,12 @@ data:
     \  }\n\n  bool merge(int x, int y) {\n    x = root(x), y = root(y);\n    if (x\
     \ == y) return false;\n    --c;\n    if (par[x] > par[y]) std::swap(x, y);\n \
     \   par[x] += par[y];\n    par[y] = x;\n    return true;\n  }\n\n  std::vector<std::vector<int>>\
-    \ groups() {\n    std::vector<std::vector<int>> ret;\n    std::vector<int> cnt(n),\
-    \ rec(n);\n    for (int i = 0; i < n; ++i) {\n      rec[i] = root(i);\n      ++cnt[rec[i]];\n\
-    \    }\n    for (int i = 0; i < n; ++i) {\n      ret[i].reserve(cnt[i]);\n   \
-    \ }\n    for (int i = 0; i < n; ++i) {\n      ret[rec[i]].push_back(i);\n    }\n\
-    \    ret.erase(std::remove_if(\n                  ret.begin(), ret.end(),\n  \
-    \                [&](const std::vector<int>& e) -> bool { return e.empty(); }),\n\
-    \              ret.end());\n    return ret;\n  }\n\n private:\n  int n;\n  int\
-    \ c;\n  std::vector<int> par;\n};\n\n}  // namespace akTARDIGRADE13\n"
+    \ groups() {\n    std::vector<std::vector<int>> ret(n);\n    for (int i = 0; i\
+    \ < n; ++i) {\n      ret[root(i)].emplace_back(i);\n    }\n    ret.erase(std::remove_if(\n\
+    \                  ret.begin(), ret.end(),\n                  [&](const std::vector<int>&\
+    \ e) -> bool { return e.empty(); }),\n              ret.end());\n    return ret;\n\
+    \  }\n\n private:\n  int n;\n  int c;\n  std::vector<int> par;\n};\n\n}  // namespace\
+    \ akTARDIGRADE13\n"
   code: "#include <algorithm>\n#include <vector>\n\nnamespace akTARDIGRADE13 {\n\n\
     struct Union_find {\n public:\n  Union_find() : n(0), c(0) {}\n  explicit Union_find(int\
     \ _n) : n(_n), c(_n), par(_n, -1) {}\n\n  int root(int x) {\n    if (par[x] <\
@@ -38,19 +36,17 @@ data:
     \  }\n\n  bool merge(int x, int y) {\n    x = root(x), y = root(y);\n    if (x\
     \ == y) return false;\n    --c;\n    if (par[x] > par[y]) std::swap(x, y);\n \
     \   par[x] += par[y];\n    par[y] = x;\n    return true;\n  }\n\n  std::vector<std::vector<int>>\
-    \ groups() {\n    std::vector<std::vector<int>> ret;\n    std::vector<int> cnt(n),\
-    \ rec(n);\n    for (int i = 0; i < n; ++i) {\n      rec[i] = root(i);\n      ++cnt[rec[i]];\n\
-    \    }\n    for (int i = 0; i < n; ++i) {\n      ret[i].reserve(cnt[i]);\n   \
-    \ }\n    for (int i = 0; i < n; ++i) {\n      ret[rec[i]].push_back(i);\n    }\n\
-    \    ret.erase(std::remove_if(\n                  ret.begin(), ret.end(),\n  \
-    \                [&](const std::vector<int>& e) -> bool { return e.empty(); }),\n\
-    \              ret.end());\n    return ret;\n  }\n\n private:\n  int n;\n  int\
-    \ c;\n  std::vector<int> par;\n};\n\n}  // namespace akTARDIGRADE13"
+    \ groups() {\n    std::vector<std::vector<int>> ret(n);\n    for (int i = 0; i\
+    \ < n; ++i) {\n      ret[root(i)].emplace_back(i);\n    }\n    ret.erase(std::remove_if(\n\
+    \                  ret.begin(), ret.end(),\n                  [&](const std::vector<int>&\
+    \ e) -> bool { return e.empty(); }),\n              ret.end());\n    return ret;\n\
+    \  }\n\n private:\n  int n;\n  int c;\n  std::vector<int> par;\n};\n\n}  // namespace\
+    \ akTARDIGRADE13"
   dependsOn: []
   isVerificationFile: false
   path: lib/data_structure/union_find/union_find.hpp
   requiredBy: []
-  timestamp: '2023-09-26 01:32:43+09:00'
+  timestamp: '2023-09-26 01:43:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/data_structure/union_find/yosupo_unionfind.test.cpp
