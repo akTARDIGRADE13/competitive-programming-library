@@ -36,17 +36,9 @@ struct Union_find {
   }
 
   std::vector<std::vector<int>> groups() {
-    std::vector<std::vector<int>> ret;
-    std::vector<int> cnt(n), rec(n);
+    std::vector<std::vector<int>> ret(n);
     for (int i = 0; i < n; ++i) {
-      rec[i] = root(i);
-      ++cnt[rec[i]];
-    }
-    for (int i = 0; i < n; ++i) {
-      ret[i].reserve(cnt[i]);
-    }
-    for (int i = 0; i < n; ++i) {
-      ret[rec[i]].push_back(i);
+      ret[root(i)].emplace_back(i);
     }
     ret.erase(std::remove_if(
                   ret.begin(), ret.end(),
