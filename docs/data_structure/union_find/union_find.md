@@ -1,3 +1,8 @@
+---
+title: union_find
+documentation_of: //lib/data_structure/union_find/union_find.hpp
+---
+
 ## 概要
 
 [Union-Find Tree を理解する！素集合系を扱うデータ構造](https://algo-logic.info/union-find-tree/)
