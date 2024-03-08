@@ -18,7 +18,7 @@ int main() {
     while(q--) {
         int t;
         std::cin >> t;
-        if(t == 1) {
+        if(!t) {
             int p, x;
             std::cin >> p >> x;
             bt.add(p, x);
