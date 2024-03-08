@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/data_structure/union_find/Unionfind.hpp
-    title: lib/data_structure/union_find/Unionfind.hpp
+    path: lib/data_structure/Unionfind/Unionfind.hpp
+    title: Unionfind
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,9 +14,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
     links:
     - https://judge.yosupo.jp/problem/unionfind
-  bundledCode: "#line 1 \"verify/data_structure/union_find/yosupo_unionfind.test.cpp\"\
+  bundledCode: "#line 1 \"verify/data_structure/Unionfind/yosupo_unionfind.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#line 2 \"\
-    lib/data_structure/union_find/Unionfind.hpp\"\n\n#include <algorithm>\n#include\
+    lib/data_structure/Unionfind/Unionfind.hpp\"\n\n#include <algorithm>\n#include\
     \ <vector>\n\nnamespace akTARDIGRADE13 {\n\nstruct Unionfind {\n  public:\n  \
     \  Unionfind() : n(0), c(0) {}\n    explicit Unionfind(int _n) : n(_n), c(_n),\
     \ par(_n, -1) {}\n\n    int root(int x) {\n        if(par[x] < 0)\n          \
@@ -33,32 +33,31 @@ data:
     \                          [&](const std::vector<int> &e) -> bool {\n        \
     \                             return e.empty();\n                            \
     \     }),\n                  ret.end());\n        return ret;\n    }\n\n  private:\n\
-    \    int n;\n    int c;\n    std::vector<int> par;\n};\n\n} // namespace akTARDIGRADE13\n\
-    #line 4 \"verify/data_structure/union_find/yosupo_unionfind.test.cpp\"\n\n#include\
-    \ <iostream>\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    akTARDIGRADE13::Unionfind\
-    \ uf(n);\n    while(q--) {\n        int t, u, v;\n        std::cin >> t >> u >>\
-    \ v;\n        if(t == 0) {\n            uf.merge(u, v);\n        } else {\n  \
-    \          std::cout << uf.same(u, v) << std::endl;\n        }\n    }\n    return\
-    \ 0;\n}\n"
+    \    int n;\n    int c;\n    std::vector<int> par;\n};\n\n}\n#line 4 \"verify/data_structure/Unionfind/yosupo_unionfind.test.cpp\"\
+    \n\n#include <iostream>\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\
+    \    akTARDIGRADE13::Unionfind uf(n);\n    while(q--) {\n        int t, u, v;\n\
+    \        std::cin >> t >> u >> v;\n        if(t == 0) {\n            uf.merge(u,\
+    \ v);\n        } else {\n            std::cout << uf.same(u, v) << std::endl;\n\
+    \        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
-    \ \"lib/data_structure/union_find/Unionfind.hpp\"\n\n#include <iostream>\n\nint\
+    \ \"lib/data_structure/Unionfind/Unionfind.hpp\"\n\n#include <iostream>\n\nint\
     \ main() {\n    int n, q;\n    std::cin >> n >> q;\n    akTARDIGRADE13::Unionfind\
     \ uf(n);\n    while(q--) {\n        int t, u, v;\n        std::cin >> t >> u >>\
     \ v;\n        if(t == 0) {\n            uf.merge(u, v);\n        } else {\n  \
     \          std::cout << uf.same(u, v) << std::endl;\n        }\n    }\n    return\
     \ 0;\n}"
   dependsOn:
-  - lib/data_structure/union_find/Unionfind.hpp
+  - lib/data_structure/Unionfind/Unionfind.hpp
   isVerificationFile: true
-  path: verify/data_structure/union_find/yosupo_unionfind.test.cpp
+  path: verify/data_structure/Unionfind/yosupo_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-03-08 18:00:58+09:00'
+  timestamp: '2024-03-08 18:21:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/data_structure/union_find/yosupo_unionfind.test.cpp
+documentation_of: verify/data_structure/Unionfind/yosupo_unionfind.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/data_structure/union_find/yosupo_unionfind.test.cpp
-- /verify/verify/data_structure/union_find/yosupo_unionfind.test.cpp.html
-title: verify/data_structure/union_find/yosupo_unionfind.test.cpp
+- /verify/verify/data_structure/Unionfind/yosupo_unionfind.test.cpp
+- /verify/verify/data_structure/Unionfind/yosupo_unionfind.test.cpp.html
+title: verify/data_structure/Unionfind/yosupo_unionfind.test.cpp
 ---
