@@ -15,6 +15,9 @@ data:
   - name: verify/data_structure/BIT
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/data_structure/BIT/AOJ_BIT.test.cpp
+      title: verify/data_structure/BIT/AOJ_BIT.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/data_structure/BIT/yosupo_BIT.test.cpp
       title: verify/data_structure/BIT/yosupo_BIT.test.cpp
   - name: verify/data_structure/Unionfind

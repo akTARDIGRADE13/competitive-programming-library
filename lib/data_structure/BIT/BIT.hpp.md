@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/data_structure/BIT/AOJ_BIT.test.cpp
+    title: verify/data_structure/BIT/AOJ_BIT.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/data_structure/BIT/yosupo_BIT.test.cpp
     title: verify/data_structure/BIT/yosupo_BIT.test.cpp
   _isVerificationFailed: false
@@ -44,6 +47,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/data_structure/BIT/yosupo_BIT.test.cpp
+  - verify/data_structure/BIT/AOJ_BIT.test.cpp
 documentation_of: lib/data_structure/BIT/BIT.hpp
 layout: document
 title: BIT
@@ -59,4 +63,4 @@ Binary indexed tree(BIT, Fenwick tree)のライブラリ．
 - `add(int i, int x)`：$i$番目(0-index)の要素に$x$を足す．計算量$\mathrm{O}(\log n)$
 - `sum(int i)`：$[0, i)$の要素の総和を返す．計算量$\mathrm{O}(\log n)$
 - `query(int l, int r)`：$[l, r)$の要素の総和を返す．計算量$\mathrm{O}(\log n)$
-- `binary_search(int x)`：$[0, i)$の要素の総和が$x$以上となるような最小の$i$を返す．存在しない場合は$0$を返す．計算量$\mathrm{O}(\log n)$
+- `binary_search(int x)`：$sum(i-1)$が$x$以上となるような最小の$i$を返す．存在しない場合は$n$を返す．計算量$\mathrm{O}(\log n)$

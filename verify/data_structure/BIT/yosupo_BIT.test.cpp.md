@@ -29,30 +29,28 @@ data:
     \       ret += r;\n            }\n            r = r >> 1;\n        }\n       \
     \ return ret;\n    }\n\n  private:\n    int n;\n    std::vector<T> vec;\n};\n\n\
     }\n#line 4 \"verify/data_structure/BIT/yosupo_BIT.test.cpp\"\n\n#include <iostream>\n\
-    \nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<long long>\
-    \ a(n);\n    akTARDIGRADE13::BIT<long long> bt(n);\n    for(int i = 0; i < n;\
-    \ ++i) {\n        int x;\n        std::cin >> x;\n        bt.add(i, x);\n    }\n\
-    \    while(q--) {\n        int t;\n        std::cin >> t;\n        if(!t) {\n\
-    \            int p, x;\n            std::cin >> p >> x;\n            bt.add(p,\
-    \ x);\n        } else {\n            int l, r;\n            std::cin >> l >> r;\n\
-    \            std::cout << bt.query(l, r) << std::endl;\n        }\n    }\n   \
-    \ return 0;\n}\n"
+    \nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    akTARDIGRADE13::BIT<long\
+    \ long> bt(n);\n    for(int i = 0; i < n; ++i) {\n        int x;\n        std::cin\
+    \ >> x;\n        bt.add(i, x);\n    }\n    while(q--) {\n        int t;\n    \
+    \    std::cin >> t;\n        if(!t) {\n            int p, x;\n            std::cin\
+    \ >> p >> x;\n            bt.add(p, x);\n        } else {\n            int l,\
+    \ r;\n            std::cin >> l >> r;\n            std::cout << bt.query(l, r)\
+    \ << std::endl;\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include \"lib/data_structure/BIT/BIT.hpp\"\n\n#include <iostream>\n\nint main()\
-    \ {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<long long> a(n);\n\
-    \    akTARDIGRADE13::BIT<long long> bt(n);\n    for(int i = 0; i < n; ++i) {\n\
-    \        int x;\n        std::cin >> x;\n        bt.add(i, x);\n    }\n    while(q--)\
-    \ {\n        int t;\n        std::cin >> t;\n        if(!t) {\n            int\
-    \ p, x;\n            std::cin >> p >> x;\n            bt.add(p, x);\n        }\
-    \ else {\n            int l, r;\n            std::cin >> l >> r;\n           \
-    \ std::cout << bt.query(l, r) << std::endl;\n        }\n    }\n    return 0;\n\
-    }"
+    \ {\n    int n, q;\n    std::cin >> n >> q;\n    akTARDIGRADE13::BIT<long long>\
+    \ bt(n);\n    for(int i = 0; i < n; ++i) {\n        int x;\n        std::cin >>\
+    \ x;\n        bt.add(i, x);\n    }\n    while(q--) {\n        int t;\n       \
+    \ std::cin >> t;\n        if(!t) {\n            int p, x;\n            std::cin\
+    \ >> p >> x;\n            bt.add(p, x);\n        } else {\n            int l,\
+    \ r;\n            std::cin >> l >> r;\n            std::cout << bt.query(l, r)\
+    \ << std::endl;\n        }\n    }\n    return 0;\n}"
   dependsOn:
   - lib/data_structure/BIT/BIT.hpp
   isVerificationFile: true
   path: verify/data_structure/BIT/yosupo_BIT.test.cpp
   requiredBy: []
-  timestamp: '2024-03-08 19:22:04+09:00'
+  timestamp: '2024-03-09 02:19:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/BIT/yosupo_BIT.test.cpp
