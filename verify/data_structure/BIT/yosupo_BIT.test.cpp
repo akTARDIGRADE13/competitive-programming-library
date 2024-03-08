@@ -7,7 +7,6 @@
 int main() {
     int n, q;
     std::cin >> n >> q;
-    std::vector<long long> a(n);
     akTARDIGRADE13::BIT<long long> bt(n);
     for(int i = 0; i < n; ++i) {
         int x;
