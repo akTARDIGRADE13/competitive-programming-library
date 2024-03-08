@@ -1,6 +1,6 @@
 ---
-title: union_find
-documentation_of: //lib/data_structure/union_find/union_find.hpp
+title: Unionfind
+documentation_of: //lib/data_structure/Unionfind/Unionfind.hpp
 ---
 
 ## 概要
