@@ -4,8 +4,8 @@ data:
   - name: lib/data_structure/union_find
     pages:
     - icon: ':heavy_check_mark:'
-      path: lib/data_structure/union_find/union_find.hpp
-      title: union_find
+      path: lib/data_structure/union_find/Unionfind.hpp
+      title: lib/data_structure/union_find/Unionfind.hpp
   verificationCategories:
   - name: verify/data_structure/union_find
     pages:
