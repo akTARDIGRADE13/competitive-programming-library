@@ -3,7 +3,6 @@
 #include "lib/data_structure/BIT/BIT.hpp"
 
 #include <iostream>
-#include <vector>
 
 int main() {
     int n, q;
