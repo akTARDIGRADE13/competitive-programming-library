@@ -7,8 +7,8 @@ namespace akTARDIGRADE13 {
 
 template <typename T> struct BIT {
     BIT() : n(0) {}
-    explicit BIT(int _n, function<T(T, T)> _fx, function<T(T)> _rev, T _ex)
-        : n(_n + 1), vec(_n + 1, 0), fx(_fx), rev(_rev), ex(_ex) {}
+    explicit BIT(int _n, function<T(T, T)> _fx, function<T(T)> _inv, T _ex)
+        : n(_n + 1), vec(_n + 1, 0), fx(_fx), inv(_inv), ex(_ex) {}
 
     void add(int i, T x) {
         ++i;
@@ -29,7 +29,7 @@ template <typename T> struct BIT {
         return ret;
     }
 
-    T query(int l, int r) { return fx(sum(r), rev(sum(l))); }
+    T query(int l, int r) { return fx(sum(r), inv(sum(l))); }
 
     int binary_search(T x) {
         int ret = 0, r = 1;
@@ -49,7 +49,7 @@ template <typename T> struct BIT {
     int n;
     std::vector<T> vec;
     std::function<T(T, T)> fx;
-    std::function<T(T)> rev;
+    std::function<T(T)> inv;
     const T ex;
 };
 
