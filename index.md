@@ -18,6 +18,9 @@ data:
       path: lib/data_structure/Unionfind/PotentializedUnionfind.hpp
       title: PotentializedUnionfind
     - icon: ':heavy_check_mark:'
+      path: lib/data_structure/Unionfind/UndoUnionfind.hpp
+      title: UndoUnionfind
+    - icon: ':heavy_check_mark:'
       path: lib/data_structure/Unionfind/Unionfind.hpp
       title: Unionfind
   verificationCategories:
@@ -50,6 +53,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/data_structure/Unionfind/PotentializedUnionfind/AOJ.test.cpp
       title: verify/data_structure/Unionfind/PotentializedUnionfind/AOJ.test.cpp
+  - name: verify/data_structure/Unionfind/UndoUnionfind
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp
+      title: verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp
   - name: verify/data_structure/Unionfind/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
