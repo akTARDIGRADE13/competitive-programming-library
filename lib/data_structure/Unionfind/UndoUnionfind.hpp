@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <cassert>
 #include <stack>
 #include <vector>
 
@@ -12,6 +13,7 @@ struct UndoUnionfind {
     explicit UndoUnionfind(int _n) : n(_n), c(_n), par(_n, -1) {}
 
     int root(int x) {
+        assert(x >= 0 && x < n);
         if(par[x] < 0)
             return x;
         return root(par[x]);
@@ -45,6 +47,7 @@ struct UndoUnionfind {
     }
 
     void undo() {
+        assert(!rec2.empty());
         par[rec.top().first] = rec.top().second;
         rec.pop();
         par[rec.top().first] = rec.top().second;
