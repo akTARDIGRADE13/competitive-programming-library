@@ -17,19 +17,20 @@ data:
   bundledCode: "#line 1 \"verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_unionfind\"\n\n\
     #line 2 \"lib/data_structure/Unionfind/UndoUnionfind.hpp\"\n\n#include <algorithm>\n\
-    #include <stack>\n#include <vector>\n\nnamespace akTARDIGRADE13 {\n\nstruct UndoUnionfind\
-    \ {\n  public:\n    UndoUnionfind() : n(0), c(0) {}\n    explicit UndoUnionfind(int\
-    \ _n) : n(_n), c(_n), par(_n, -1) {}\n\n    int root(int x) {\n        if(par[x]\
-    \ < 0)\n            return x;\n        return root(par[x]);\n    }\n\n    bool\
-    \ same(int x, int y) {\n        x = root(x), y = root(y);\n        return x ==\
-    \ y;\n    }\n\n    int count_group() { return c; }\n\n    int size(int x) {\n\
-    \        x = root(x);\n        return -par[x];\n    }\n\n    bool merge(int x,\
-    \ int y) {\n        x = root(x), y = root(y);\n        rec.emplace(x, par[x]);\n\
-    \        rec.emplace(y, par[y]);\n        rec2.emplace(c);\n        if(x == y)\n\
-    \            return false;\n        --c;\n        if(par[x] > par[y])\n      \
-    \      std::swap(x, y);\n        par[x] += par[y];\n        par[y] = x;\n    \
-    \    return true;\n    }\n\n    void undo() {\n        par[rec.top().first] =\
-    \ rec.top().second;\n        rec.pop();\n        par[rec.top().first] = rec.top().second;\n\
+    #include <cassert>\n#include <stack>\n#include <vector>\n\nnamespace akTARDIGRADE13\
+    \ {\n\nstruct UndoUnionfind {\n  public:\n    UndoUnionfind() : n(0), c(0) {}\n\
+    \    explicit UndoUnionfind(int _n) : n(_n), c(_n), par(_n, -1) {}\n\n    int\
+    \ root(int x) {\n        assert(x >= 0 && x < n);\n        if(par[x] < 0)\n  \
+    \          return x;\n        return root(par[x]);\n    }\n\n    bool same(int\
+    \ x, int y) {\n        x = root(x), y = root(y);\n        return x == y;\n   \
+    \ }\n\n    int count_group() { return c; }\n\n    int size(int x) {\n        x\
+    \ = root(x);\n        return -par[x];\n    }\n\n    bool merge(int x, int y) {\n\
+    \        x = root(x), y = root(y);\n        rec.emplace(x, par[x]);\n        rec.emplace(y,\
+    \ par[y]);\n        rec2.emplace(c);\n        if(x == y)\n            return false;\n\
+    \        --c;\n        if(par[x] > par[y])\n            std::swap(x, y);\n   \
+    \     par[x] += par[y];\n        par[y] = x;\n        return true;\n    }\n\n\
+    \    void undo() {\n        assert(!rec2.empty());\n        par[rec.top().first]\
+    \ = rec.top().second;\n        rec.pop();\n        par[rec.top().first] = rec.top().second;\n\
     \        rec.pop();\n        c = par[rec2.top()];\n        rec2.pop();\n    }\n\
     \n    std::vector<std::vector<int>> groups() {\n        std::vector<std::vector<int>>\
     \ ret(n);\n        for(int i = 0; i < n; ++i) {\n            ret[root(i)].emplace_back(i);\n\
@@ -72,7 +73,7 @@ data:
   isVerificationFile: true
   path: verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 19:53:19+09:00'
+  timestamp: '2024-03-09 20:53:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp
