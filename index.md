@@ -6,20 +6,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/BIT/BIT.hpp
       title: BIT
+    - icon: ':warning:'
+      path: lib/data_structure/BIT/abstract_BIT.hpp
+      title: abstract_BIT
   - name: lib/data_structure/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/Unionfind/Unionfind.hpp
       title: Unionfind
   verificationCategories:
-  - name: verify/data_structure/BIT
+  - name: verify/data_structure/BIT/BIT
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/data_structure/BIT/AOJ_BIT.test.cpp
-      title: verify/data_structure/BIT/AOJ_BIT.test.cpp
+      path: verify/data_structure/BIT/BIT/AOJ_BIT.test.cpp
+      title: verify/data_structure/BIT/BIT/AOJ_BIT.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/data_structure/BIT/yosupo_BIT.test.cpp
-      title: verify/data_structure/BIT/yosupo_BIT.test.cpp
+      path: verify/data_structure/BIT/BIT/yosupo_BIT.test.cpp
+      title: verify/data_structure/BIT/BIT/yosupo_BIT.test.cpp
   - name: verify/data_structure/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
