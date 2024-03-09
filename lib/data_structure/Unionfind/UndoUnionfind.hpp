@@ -29,16 +29,19 @@ struct UndoUnionfind {
         return -par[x];
     }
 
-    void merge(int x, int y) {
+    bool merge(int x, int y) {
         x = root(x), y = root(y);
         rec.emplace(x, par[x]);
         rec.emplace(y, par[y]);
         rec2.emplace(c);
+        if(x == y)
+            return false;
         --c;
         if(par[x] > par[y])
             std::swap(x, y);
         par[x] += par[y];
         par[y] = x;
+        return true;
     }
 
     void undo() {
@@ -71,4 +74,4 @@ struct UndoUnionfind {
     std::stack<int> rec2;
 };
 
-}
+} // namespace akTARDIGRADE13
