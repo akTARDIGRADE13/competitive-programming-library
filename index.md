@@ -15,6 +15,9 @@ data:
   - name: lib/data_structure/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
+      path: lib/data_structure/Unionfind/PotentializedUnionfind.hpp
+      title: PotentializedUnionfind
+    - icon: ':heavy_check_mark:'
       path: lib/data_structure/Unionfind/Unionfind.hpp
       title: Unionfind
   verificationCategories:
@@ -42,6 +45,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
       title: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
+  - name: verify/data_structure/Unionfind/PotentializedUnionfind
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/Unionfind/PotentializedUnionfind/AOJ.test.cpp
+      title: verify/data_structure/Unionfind/PotentializedUnionfind/AOJ.test.cpp
   - name: verify/data_structure/Unionfind/Unionfind
     pages:
     - icon: ':heavy_check_mark:'

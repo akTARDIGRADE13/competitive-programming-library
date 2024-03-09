@@ -70,10 +70,10 @@ title: Unionfind
 
 ## 使い方
 
-- `Union_find(int n)`：サイズ$n$のunion_findを生成する．計算量$\mathrm{O}(n)$
+- `Unionfind(int n)`：サイズ$n$のUnionfindを生成する．計算量$\mathrm{O}(n)$
 - `merge(int x, int y)`：「$x$の属する集合」と「$y$の属する集合」をマージする．返り値はマージに成功したらtrue，失敗したらfalseを返す．計算量$\mathrm{O}(\alpha(n))$
 - `root(int k)`：$k$の根を返す．計算量$\mathrm{O}(\alpha(n))$
 - `same(int x, int y)`：$x$と$y$が同じ集合に所属しているかを返す．計算量$\mathrm{O}(\alpha(n))$
-- `size(int k)`：$x$を含む集合のサイズを返す．計算量$\mathrm{O}(\alpha(n))$
+- `size(int x)`：$x$を含む集合のサイズを返す．計算量$\mathrm{O}(\alpha(n))$
 - `count_groups()`：存在する集合の個数を返す．計算量$\mathrm{O}(1)$
 - `groups()`：存在する集合を全列挙して返す．計算量$\mathrm{O}(n)$
