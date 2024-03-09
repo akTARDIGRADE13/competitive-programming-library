@@ -101,6 +101,6 @@ title: PotentializedUnionfind
 - `root(int k)`：$k$の根を返す．計算量$\mathrm{O}(\log n)$
 - `same(int x, int y)`：$x$と$y$が同じ集合に所属しているかを返す．計算量$\mathrm{O}(\log n)$
 - `size(int x)`：$x$を含む集合のサイズを返す．計算量$\mathrm{O}(\log n)$
-- `diff(int x, int y)`：$x$に対する$y$のポテンシャルを返す．計算量$\mathrm{O}(\log n)$
+- `diff(int x, int y)`：$x$に対する$y$のポテンシャルを返す．$x$と$y$が連結していない場合は無意味な値が返ってくるので注意．計算量$\mathrm{O}(\log n)$
 - `count_groups()`：存在する集合の個数を返す．計算量$\mathrm{O}(1)$
 - `groups()`：存在する集合を全列挙して返す．計算量$\mathrm{O}(n)$
