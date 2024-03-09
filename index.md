@@ -14,6 +14,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/Unionfind/Unionfind.hpp
       title: Unionfind
+  - name: verify/data_structure/BIT/abstract_BIT
+    pages:
+    - icon: ':warning:'
+      path: verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
+      title: verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
+    - icon: ':warning:'
+      path: verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
+      title: verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
   verificationCategories:
   - name: verify/data_structure/BIT/BIT
     pages:
@@ -23,11 +31,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/data_structure/BIT/BIT/yosupo_BIT.test.cpp
       title: verify/data_structure/BIT/BIT/yosupo_BIT.test.cpp
-  - name: verify/data_structure/Unionfind
+  - name: verify/data_structure/Unionfind/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/data_structure/Unionfind/yosupo_unionfind.test.cpp
-      title: verify/data_structure/Unionfind/yosupo_unionfind.test.cpp
+      path: verify/data_structure/Unionfind/Unionfind/yosupo_unionfind.test.cpp
+      title: verify/data_structure/Unionfind/Unionfind/yosupo_unionfind.test.cpp
 layout: toppage
 ---
 [![tardigrade](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Ftardigrade)](https://atcoder.jp/users/tardigrade)

@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
+    title: verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
+  - icon: ':warning:'
+    path: verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
+    title: verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -43,7 +49,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: lib/data_structure/BIT/abstract_BIT.hpp
-  requiredBy: []
+  requiredBy:
+  - verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
+  - verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
   timestamp: '2024-03-09 02:36:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
