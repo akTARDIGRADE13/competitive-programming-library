@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include <functional>
 #include <vector>
 
@@ -7,10 +8,12 @@ namespace akTARDIGRADE13 {
 
 template <typename T> struct BIT {
     BIT() : n(0) {}
-    explicit BIT(int _n, std::function<T(T, T)> _fx, std::function<T(T)> _inv, T _ex)
+    explicit BIT(int _n, std::function<T(T, T)> _fx, std::function<T(T)> _inv,
+                 T _ex)
         : n(_n + 1), vec(_n + 1, 0), fx(_fx), inv(_inv), ex(_ex) {}
 
     void add(int i, T x) {
+        assert(i >= 0 && i < n - 1);
         ++i;
         while(i < n) {
             vec[i] = fx(vec[i], x);
@@ -19,6 +22,7 @@ template <typename T> struct BIT {
     }
 
     T sum(int i) {
+        assert(i >= 0 && i < n);
         if(i == 0)
             return 0;
         T ret = ex;
@@ -29,7 +33,10 @@ template <typename T> struct BIT {
         return ret;
     }
 
-    T query(int l, int r) { return fx(sum(r), inv(sum(l))); }
+    T query(int l, int r) {
+        assert(l <= r);
+        return fx(sum(r), inv(sum(l)));
+    }
 
     int binary_search(T x) {
         int ret = 0, r = 1;
@@ -53,4 +60,4 @@ template <typename T> struct BIT {
     const T ex;
 };
 
-}
+} 
