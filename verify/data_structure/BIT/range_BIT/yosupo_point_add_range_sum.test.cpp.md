@@ -16,18 +16,20 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
-    #line 2 \"lib/data_structure/BIT/range_BIT.hpp\"\n\n#include <vector>\n\nnamespace\
-    \ akTARDIGRADE13 {\n\ntemplate <typename T> struct range_BIT {\n    range_BIT()\
-    \ : n(0) {}\n    explicit range_BIT(int _n) : n(_n + 2), vec(2, std::vector<T>(_n\
-    \ + 2, 0)) {}\n\n    void add(int l, int r, T x) {\n        ++l, ++r;\n      \
-    \  for(int i = l; i < n; i += i & (-i)) {\n            vec[0][i] -= x * (l - 1);\n\
-    \            vec[1][i] += x;\n        }\n        for(int i = r; i < n; i += i\
-    \ & (-i)) {\n            vec[0][i] += x * (r - 1);\n            vec[1][i] -= x;\n\
-    \        }\n    }\n\n    T sum(int i) {\n        T ret(0);\n        int k = i;\n\
-    \        while(i > 0) {\n            ret += vec[1][i] * k + vec[0][i];\n     \
-    \       i -= i & (-i);\n        }\n        return ret;\n    }\n\n    T query(int\
-    \ l, int r) { return sum(r) - sum(l); }\n\n  private:\n    int n;\n    std::vector<std::vector<T>>\
-    \ vec;\n};\n\n} \n#line 4 \"verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp\"\
+    #line 2 \"lib/data_structure/BIT/range_BIT.hpp\"\n\n#include <cassert>\n#include\
+    \ <vector>\n\nnamespace akTARDIGRADE13 {\n\ntemplate <typename T> struct range_BIT\
+    \ {\n    range_BIT() : n(0) {}\n    explicit range_BIT(int _n) : n(_n + 2), vec(2,\
+    \ std::vector<T>(_n + 2, 0)) {}\n\n    void add(int l, int r, T x) {\n       \
+    \ assert(l >= 0 && l < n - 1 && l < r && r < n);\n        ++l, ++r;\n        for(int\
+    \ i = l; i < n; i += i & (-i)) {\n            vec[0][i] -= x * (l - 1);\n    \
+    \        vec[1][i] += x;\n        }\n        for(int i = r; i < n; i += i & (-i))\
+    \ {\n            vec[0][i] += x * (r - 1);\n            vec[1][i] -= x;\n    \
+    \    }\n    }\n\n    T sum(int i) {\n        assert(i >= 0 && i < n);\n      \
+    \  T ret(0);\n        int k = i;\n        while(i > 0) {\n            ret += vec[1][i]\
+    \ * k + vec[0][i];\n            i -= i & (-i);\n        }\n        return ret;\n\
+    \    }\n\n    T query(int l, int r) {\n        assert(l <= r);\n        return\
+    \ sum(r) - sum(l);\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<T>>\
+    \ vec;\n};\n\n}\n#line 4 \"verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp\"\
     \n\n#include <iostream>\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\
     \    akTARDIGRADE13::range_BIT<long long> bt(n);\n    for(int i = 0; i < n; ++i)\
     \ {\n        int x;\n        std::cin >> x;\n        bt.add(i, i + 1, x);\n  \
@@ -50,7 +52,7 @@ data:
   isVerificationFile: true
   path: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 03:30:39+09:00'
+  timestamp: '2024-03-09 21:05:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp

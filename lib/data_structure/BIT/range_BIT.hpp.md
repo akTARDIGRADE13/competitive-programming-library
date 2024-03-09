@@ -14,35 +14,38 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"lib/data_structure/BIT/range_BIT.hpp\"\n\n#include <vector>\n\
-    \nnamespace akTARDIGRADE13 {\n\ntemplate <typename T> struct range_BIT {\n   \
-    \ range_BIT() : n(0) {}\n    explicit range_BIT(int _n) : n(_n + 2), vec(2, std::vector<T>(_n\
-    \ + 2, 0)) {}\n\n    void add(int l, int r, T x) {\n        ++l, ++r;\n      \
-    \  for(int i = l; i < n; i += i & (-i)) {\n            vec[0][i] -= x * (l - 1);\n\
-    \            vec[1][i] += x;\n        }\n        for(int i = r; i < n; i += i\
-    \ & (-i)) {\n            vec[0][i] += x * (r - 1);\n            vec[1][i] -= x;\n\
-    \        }\n    }\n\n    T sum(int i) {\n        T ret(0);\n        int k = i;\n\
+  bundledCode: "#line 2 \"lib/data_structure/BIT/range_BIT.hpp\"\n\n#include <cassert>\n\
+    #include <vector>\n\nnamespace akTARDIGRADE13 {\n\ntemplate <typename T> struct\
+    \ range_BIT {\n    range_BIT() : n(0) {}\n    explicit range_BIT(int _n) : n(_n\
+    \ + 2), vec(2, std::vector<T>(_n + 2, 0)) {}\n\n    void add(int l, int r, T x)\
+    \ {\n        assert(l >= 0 && l < n - 1 && l < r && r < n);\n        ++l, ++r;\n\
+    \        for(int i = l; i < n; i += i & (-i)) {\n            vec[0][i] -= x *\
+    \ (l - 1);\n            vec[1][i] += x;\n        }\n        for(int i = r; i <\
+    \ n; i += i & (-i)) {\n            vec[0][i] += x * (r - 1);\n            vec[1][i]\
+    \ -= x;\n        }\n    }\n\n    T sum(int i) {\n        assert(i >= 0 && i <\
+    \ n);\n        T ret(0);\n        int k = i;\n        while(i > 0) {\n       \
+    \     ret += vec[1][i] * k + vec[0][i];\n            i -= i & (-i);\n        }\n\
+    \        return ret;\n    }\n\n    T query(int l, int r) {\n        assert(l <=\
+    \ r);\n        return sum(r) - sum(l);\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<T>>\
+    \ vec;\n};\n\n}\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\nnamespace akTARDIGRADE13\
+    \ {\n\ntemplate <typename T> struct range_BIT {\n    range_BIT() : n(0) {}\n \
+    \   explicit range_BIT(int _n) : n(_n + 2), vec(2, std::vector<T>(_n + 2, 0))\
+    \ {}\n\n    void add(int l, int r, T x) {\n        assert(l >= 0 && l < n - 1\
+    \ && l < r && r < n);\n        ++l, ++r;\n        for(int i = l; i < n; i += i\
+    \ & (-i)) {\n            vec[0][i] -= x * (l - 1);\n            vec[1][i] += x;\n\
+    \        }\n        for(int i = r; i < n; i += i & (-i)) {\n            vec[0][i]\
+    \ += x * (r - 1);\n            vec[1][i] -= x;\n        }\n    }\n\n    T sum(int\
+    \ i) {\n        assert(i >= 0 && i < n);\n        T ret(0);\n        int k = i;\n\
     \        while(i > 0) {\n            ret += vec[1][i] * k + vec[0][i];\n     \
     \       i -= i & (-i);\n        }\n        return ret;\n    }\n\n    T query(int\
-    \ l, int r) { return sum(r) - sum(l); }\n\n  private:\n    int n;\n    std::vector<std::vector<T>>\
-    \ vec;\n};\n\n} \n"
-  code: "#pragma once\n\n#include <vector>\n\nnamespace akTARDIGRADE13 {\n\ntemplate\
-    \ <typename T> struct range_BIT {\n    range_BIT() : n(0) {}\n    explicit range_BIT(int\
-    \ _n) : n(_n + 2), vec(2, std::vector<T>(_n + 2, 0)) {}\n\n    void add(int l,\
-    \ int r, T x) {\n        ++l, ++r;\n        for(int i = l; i < n; i += i & (-i))\
-    \ {\n            vec[0][i] -= x * (l - 1);\n            vec[1][i] += x;\n    \
-    \    }\n        for(int i = r; i < n; i += i & (-i)) {\n            vec[0][i]\
-    \ += x * (r - 1);\n            vec[1][i] -= x;\n        }\n    }\n\n    T sum(int\
-    \ i) {\n        T ret(0);\n        int k = i;\n        while(i > 0) {\n      \
-    \      ret += vec[1][i] * k + vec[0][i];\n            i -= i & (-i);\n       \
-    \ }\n        return ret;\n    }\n\n    T query(int l, int r) { return sum(r) -\
-    \ sum(l); }\n\n  private:\n    int n;\n    std::vector<std::vector<T>> vec;\n\
-    };\n\n} "
+    \ l, int r) {\n        assert(l <= r);\n        return sum(r) - sum(l);\n    }\n\
+    \n  private:\n    int n;\n    std::vector<std::vector<T>> vec;\n};\n\n}"
   dependsOn: []
   isVerificationFile: false
   path: lib/data_structure/BIT/range_BIT.hpp
   requiredBy: []
-  timestamp: '2024-03-09 03:04:01+09:00'
+  timestamp: '2024-03-09 21:05:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp

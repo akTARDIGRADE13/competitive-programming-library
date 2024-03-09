@@ -34,7 +34,7 @@ data:
     \ -> bool {\n                                     return e.empty();\n        \
     \                         }),\n                  ret.end());\n        return ret;\n\
     \    }\n\n  private:\n    int n;\n    int c;\n    std::vector<int> par;\n    std::stack<std::pair<int,\
-    \ int>> rec;\n    std::stack<int> rec2;\n};\n\n} // namespace akTARDIGRADE13\n"
+    \ int>> rec;\n    std::stack<int> rec2;\n};\n\n} \n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <stack>\n\
     #include <vector>\n\nnamespace akTARDIGRADE13 {\n\nstruct UndoUnionfind {\n  public:\n\
     \    UndoUnionfind() : n(0), c(0) {}\n    explicit UndoUnionfind(int _n) : n(_n),\
@@ -57,12 +57,12 @@ data:
     \ -> bool {\n                                     return e.empty();\n        \
     \                         }),\n                  ret.end());\n        return ret;\n\
     \    }\n\n  private:\n    int n;\n    int c;\n    std::vector<int> par;\n    std::stack<std::pair<int,\
-    \ int>> rec;\n    std::stack<int> rec2;\n};\n\n} // namespace akTARDIGRADE13"
+    \ int>> rec;\n    std::stack<int> rec2;\n};\n\n} "
   dependsOn: []
   isVerificationFile: false
   path: lib/data_structure/Unionfind/UndoUnionfind.hpp
   requiredBy: []
-  timestamp: '2024-03-09 20:53:11+09:00'
+  timestamp: '2024-03-09 21:04:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp

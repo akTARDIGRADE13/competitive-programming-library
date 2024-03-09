@@ -16,20 +16,22 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
-    #line 2 \"lib/data_structure/BIT/BIT.hpp\"\n\n#include <vector>\n\nnamespace akTARDIGRADE13\
-    \ {\n\ntemplate <typename T> struct BIT {\n    BIT() : n(0) {}\n    explicit BIT(int\
-    \ _n) : n(_n + 1), vec(_n + 1, 0) {}\n\n    void add(int i, T x) {\n        ++i;\n\
-    \        while(i < n) {\n            vec[i] += x;\n            i += i & (-i);\n\
-    \        }\n    }\n\n    T sum(int i) {\n        T ret(0);\n        while(i >\
-    \ 0) {\n            ret += vec[i];\n            i -= i & (-i);\n        }\n  \
-    \      return ret;\n    }\n\n    T query(int l, int r) { return sum(r) - sum(l);\
-    \ }\n\n    int binary_search(T x) {\n        int ret = 0, r = 1;\n        while(r\
-    \ < n)\n            r = r << 1;\n        while(r > 0) {\n            if(ret +\
-    \ r < n && vec[ret + r] < x) {\n                x -= vec[ret + r];\n         \
-    \       ret += r;\n            }\n            r = r >> 1;\n        }\n       \
-    \ return ret;\n    }\n\n  private:\n    int n;\n    std::vector<T> vec;\n};\n\n\
-    }\n#line 4 \"verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp\"\
-    \n\n#include <iostream>\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\
+    #line 2 \"lib/data_structure/BIT/BIT.hpp\"\n\n#include <cassert>\n#include <vector>\n\
+    \nnamespace akTARDIGRADE13 {\n\ntemplate <typename T> struct BIT {\n    BIT()\
+    \ : n(0) {}\n    explicit BIT(int _n) : n(_n + 1), vec(_n + 1, 0) {}\n\n    void\
+    \ add(int i, T x) {\n        assert(i >= 0 && i < n - 1);\n        ++i;\n    \
+    \    while(i < n) {\n            vec[i] += x;\n            i += i & (-i);\n  \
+    \      }\n    }\n\n    T sum(int i) {\n        assert(i >= 0 && i < n);\n    \
+    \    T ret(0);\n        while(i > 0) {\n            ret += vec[i];\n         \
+    \   i -= i & (-i);\n        }\n        return ret;\n    }\n\n    T query(int l,\
+    \ int r) {\n        assert(l <= r);\n        return sum(r) - sum(l);\n    }\n\n\
+    \    int binary_search(T x) {\n        int ret = 0, r = 1;\n        while(r <\
+    \ n)\n            r = r << 1;\n        while(r > 0) {\n            if(ret + r\
+    \ < n && vec[ret + r] < x) {\n                x -= vec[ret + r];\n           \
+    \     ret += r;\n            }\n            r = r >> 1;\n        }\n        return\
+    \ ret;\n    }\n\n  private:\n    int n;\n    std::vector<T> vec;\n};\n\n} \n#line\
+    \ 4 \"verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp\"\n\n\
+    #include <iostream>\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\
     \    akTARDIGRADE13::BIT<long long> bt(n);\n    for(int i = 0; i < n; ++i) {\n\
     \        int x;\n        std::cin >> x;\n        bt.add(i, x);\n    }\n    while(q--)\
     \ {\n        int t;\n        std::cin >> t;\n        if(!t) {\n            int\
@@ -51,7 +53,7 @@ data:
   isVerificationFile: true
   path: verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 03:30:39+09:00'
+  timestamp: '2024-03-09 21:05:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp

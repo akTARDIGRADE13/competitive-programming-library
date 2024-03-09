@@ -39,8 +39,7 @@ data:
     \                             return e.empty();\n                            \
     \     }),\n                  ret.end());\n        return ret;\n    }\n\n  private:\n\
     \    int n;\n    int c;\n    std::vector<int> par;\n    std::stack<std::pair<int,\
-    \ int>> rec;\n    std::stack<int> rec2;\n};\n\n} // namespace akTARDIGRADE13\n\
-    #line 4 \"verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp\"\
+    \ int>> rec;\n    std::stack<int> rec2;\n};\n\n} \n#line 4 \"verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp\"\
     \n\n#include <array>\n#include <iostream>\n#line 8 \"verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp\"\
     \n\nusing A = std::array<int, 4>;\n\nint main() {\n    int n, q;\n    std::cin\
     \ >> n >> q;\n    akTARDIGRADE13::UndoUnionfind uf(n);\n    std::vector<std::vector<A>>\
@@ -73,7 +72,7 @@ data:
   isVerificationFile: true
   path: verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 20:53:11+09:00'
+  timestamp: '2024-03-09 21:04:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp
