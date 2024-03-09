@@ -9,6 +9,7 @@ template <typename T> struct range_BIT {
     explicit range_BIT(int _n) : n(_n + 2), vec(2, std::vector<T>(_n + 2, 0)) {}
 
     void add(int l, int r, T x) {
+        assert(l >= 0 && l < n - 1 && l < r && r < n);
         ++l, ++r;
         for(int i = l; i < n; i += i & (-i)) {
             vec[0][i] -= x * (l - 1);
@@ -21,6 +22,7 @@ template <typename T> struct range_BIT {
     }
 
     T sum(int i) {
+        assert(i >= 0 && i < n);
         T ret(0);
         int k = i;
         while(i > 0) {
@@ -30,11 +32,14 @@ template <typename T> struct range_BIT {
         return ret;
     }
 
-    T query(int l, int r) { return sum(r) - sum(l); }
+    T query(int l, int r) {
+        assert(l <= r);
+        return sum(r) - sum(l);
+    }
 
   private:
     int n;
     std::vector<std::vector<T>> vec;
 };
 
-} 
+}
