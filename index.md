@@ -6,31 +6,42 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/BIT/BIT.hpp
       title: BIT
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: lib/data_structure/BIT/abstract_BIT.hpp
       title: abstract_BIT
+    - icon: ':heavy_check_mark:'
+      path: lib/data_structure/BIT/range_BIT.hpp
+      title: range_BIT
   - name: lib/data_structure/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/Unionfind/Unionfind.hpp
       title: Unionfind
-  - name: verify/data_structure/BIT/abstract_BIT
-    pages:
-    - icon: ':warning:'
-      path: verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
-      title: verify/data_structure/BIT/abstract_BIT/AOJ_abstract_BIT.cpp
-    - icon: ':warning:'
-      path: verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
-      title: verify/data_structure/BIT/abstract_BIT/yosupo_abstract_BIT.cpp
   verificationCategories:
   - name: verify/data_structure/BIT/BIT
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/data_structure/BIT/BIT/AOJ_BIT.test.cpp
-      title: verify/data_structure/BIT/BIT/AOJ_BIT.test.cpp
+      path: verify/data_structure/BIT/BIT/AOJ.test.cpp
+      title: verify/data_structure/BIT/BIT/AOJ.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/data_structure/BIT/BIT/yosupo_BIT.test.cpp
-      title: verify/data_structure/BIT/BIT/yosupo_BIT.test.cpp
+      path: verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp
+      title: verify/data_structure/BIT/BIT/yosupo_point_add_range_sum.test.cpp
+  - name: verify/data_structure/BIT/abstract_BIT
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/BIT/abstract_BIT/AOJ.test.cpp
+      title: verify/data_structure/BIT/abstract_BIT/AOJ.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/BIT/abstract_BIT/yosupo_point_add_range_sum.test.cpp
+      title: verify/data_structure/BIT/abstract_BIT/yosupo_point_add_range_sum.test.cpp
+  - name: verify/data_structure/BIT/range_BIT
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/BIT/range_BIT/AOJ.test.cpp
+      title: verify/data_structure/BIT/range_BIT/AOJ.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
+      title: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
   - name: verify/data_structure/Unionfind/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
