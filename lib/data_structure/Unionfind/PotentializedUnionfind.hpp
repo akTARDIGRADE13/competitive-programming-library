@@ -41,6 +41,7 @@ template <typename T> struct PotentializedUnionfind {
     bool same(int x, int y) { return root(x) == root(y); }
 
     int root(int x) {
+        assert(x >= 0 && x < n);
         if(parents[x] < 0) {
             return x;
         } else {

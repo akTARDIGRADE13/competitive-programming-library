@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <cassert>
 #include <vector>
 
 namespace akTARDIGRADE13 {
@@ -11,6 +12,7 @@ struct Unionfind {
     explicit Unionfind(int _n) : n(_n), c(_n), par(_n, -1) {}
 
     int root(int x) {
+        assert(x >= 0 && x < n);
         if(par[x] < 0)
             return x;
         return par[x] = root(par[x]);
