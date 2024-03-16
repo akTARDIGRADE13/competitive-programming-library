@@ -23,6 +23,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/Unionfind/Unionfind.hpp
       title: Unionfind
+  - name: lib/math/ModInt
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/math/ModInt/mint.hpp
+      title: mint
   verificationCategories:
   - name: verify/data_structure/BIT/BIT
     pages:
@@ -63,6 +68,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/data_structure/Unionfind/Unionfind/yosupo_unionfind.test.cpp
       title: verify/data_structure/Unionfind/Unionfind/yosupo_unionfind.test.cpp
+  - name: verify/math/ModInt/mint/yosupo_https:/judge.yosupo.jp/problem
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/math/ModInt/mint/yosupo_https:/judge.yosupo.jp/problem/binomial_coefficient_prime_mod.test.cpp
+      title: verify/math/ModInt/mint/yosupo_https:/judge.yosupo.jp/problem/binomial_coefficient_prime_mod.test.cpp
 layout: toppage
 ---
 [![tardigrade](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Ftardigrade)](https://atcoder.jp/users/tardigrade)
