@@ -5,12 +5,17 @@
 
 namespace akTARDIGRADE13 {
 
-template <int mod> struct mint {
+template <int id> struct d_mint {
+    using mint = d_mint;
+    static int mod;
     long long x;
 
-    mint(long long x = 0) : x(normalize(x)) {
-        static_assert(mod > 0, "modulus must be positive");
-        static_assert(mod < (1 << 30), "modulus must be small than 2*30");
+    d_mint(long long x = 0) : x(normalize(x)) {}
+
+    static void set_mod(int m) {
+        assert(m > 0 && "modulus must be positive");
+        assert(m < (1 << 30) && "modulus must be smaller than 2^30");
+        mod = m;
     }
 
     mint &operator++() {
@@ -97,5 +102,7 @@ template <int mod> struct mint {
         return os;
     }
 };
+
+template <int id> int d_mint<id>::mod;
 
 }

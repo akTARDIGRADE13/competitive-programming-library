@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
 
-#include "lib/math/ModInt/mint.hpp"
+#include "lib/math/ModInt/d_mint.hpp"
 
 #include <iostream>
 #include <vector>
