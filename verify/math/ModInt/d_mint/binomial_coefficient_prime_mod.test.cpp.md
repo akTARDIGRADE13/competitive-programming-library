@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: lib/math/ModInt/d_mint.hpp
-    title: lib/math/ModInt/d_mint.hpp
+    title: d_mint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

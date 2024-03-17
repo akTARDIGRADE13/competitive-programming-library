@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
+    title: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"lib/math/ModInt/mint.hpp\"\n\n#include <cassert>\n#include\
@@ -74,8 +77,9 @@ data:
   path: lib/math/ModInt/mint.hpp
   requiredBy: []
   timestamp: '2024-03-17 09:36:27+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
 documentation_of: lib/math/ModInt/mint.hpp
 layout: document
 title: mint
@@ -83,7 +87,7 @@ title: mint
 
 ## 概要
 
-静的modintと動的modintのライブラリ
+静的modintのライブラリ．
 
 ## 使い方
 

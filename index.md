@@ -12,6 +12,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/data_structure/BIT/range_BIT.hpp
       title: range_BIT
+  - name: lib/data_structure/SegmentTree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/data_structure/SegmentTree/Segtree.hpp
+      title: Segtree
   - name: lib/data_structure/Unionfind
     pages:
     - icon: ':heavy_check_mark:'
@@ -27,8 +32,8 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: lib/math/ModInt/d_mint.hpp
-      title: lib/math/ModInt/d_mint.hpp
-    - icon: ':warning:'
+      title: d_mint
+    - icon: ':heavy_check_mark:'
       path: lib/math/ModInt/mint.hpp
       title: mint
   verificationCategories:
@@ -56,6 +61,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
       title: verify/data_structure/BIT/range_BIT/yosupo_point_add_range_sum.test.cpp
+  - name: verify/data_structure/SegmentTree/Segtree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
+      title: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
   - name: verify/data_structure/Unionfind/PotentializedUnionfind
     pages:
     - icon: ':heavy_check_mark:'

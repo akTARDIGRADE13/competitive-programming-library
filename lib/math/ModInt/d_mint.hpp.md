@@ -86,8 +86,12 @@ data:
   - verify/math/ModInt/d_mint/binomial_coefficient_prime_mod.test.cpp
 documentation_of: lib/math/ModInt/d_mint.hpp
 layout: document
-redirect_from:
-- /library/lib/math/ModInt/d_mint.hpp
-- /library/lib/math/ModInt/d_mint.hpp.html
-title: lib/math/ModInt/d_mint.hpp
+title: d_mint
 ---
+
+## 概要
+
+動的modintのライブラリ．
+
+## 使い方
+
