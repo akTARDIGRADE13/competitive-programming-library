@@ -56,4 +56,4 @@ template <typename T> struct Segtree {
     const T ex;
 };
 
-} // namespace akTARDIGRADE13
+}
