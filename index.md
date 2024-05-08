@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: lib/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/convolution/convolution.hpp
+      title: convolution
   - name: lib/data_structure/BIT
     pages:
     - icon: ':heavy_check_mark:'
@@ -37,6 +42,11 @@ data:
       path: lib/math/ModInt/mint.hpp
       title: mint
   verificationCategories:
+  - name: verify/convolution/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
+      title: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   - name: verify/data_structure/BIT/BIT
     pages:
     - icon: ':heavy_check_mark:'
