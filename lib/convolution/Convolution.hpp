@@ -30,7 +30,7 @@ template <int mod> struct NTT {
         return a;
     }
 
-  private:
+private:
     int get_pr() {
         if constexpr(mod == 998244353) {
             return 3;
