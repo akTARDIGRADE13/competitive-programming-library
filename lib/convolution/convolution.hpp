@@ -36,11 +36,11 @@ struct NTT{
         while((1 << d) < m) {
             d++;
         }
-        a = ntt(a, d - 1), b = ntt(b, d - 1);
+        a = ntt(a, d), b = ntt(b, d);
         for(int i = 0; i < m; i++) {
             a[i] *= b[i];
         }
-        a = ntt(a, d - 1, true);
+        a = ntt(a, d, true);
         mint<mod> inv = mint<mod>(m).inv();
         for(int i = 0; i < m; i++) {
             a[i] *= inv;
@@ -93,24 +93,32 @@ private:
         return ret;
     }
 
+    // バタフライ演算
     std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int d, bool inv = false) {
         int n = a.size();
         if(n == 1) return a;
-        std::vector<mint<mod>> even(n >> 1), odd(n >> 1);
         for(int i = 0; i < n; i++) {
-            if(i & 1) {
-                odd[i >> 1] = a[i];
-            } else {
-                even[i >> 1] = a[i];
+            int j = 0;
+            for(int k = 0; k < d; k++) {
+                if(i >> k & 1) {
+                    j |= 1 << (d - 1 - k);
+                }
+            }
+            if(i < j) {
+                std::swap(a[i], a[j]);
             }
         }
-        even = ntt(even, d - 1, inv);
-        odd = ntt(odd, d - 1, inv);
-        mint<mod> w = 1, wn = (inv ? inv_root : root)[d];
-        for(int i = 0; i < (n >> 1); i++) {
-            a[i] = even[i] + w * odd[i];
-            a[i + (n >> 1)] = even[i] - w * odd[i];
-            w *= wn;
+        for(int i = 0; i < d; i++) {
+            int m = 1 << i;
+            mint<mod> w = 1, wn = (inv ? inv_root : root)[i];
+            for(int j = 0; j < m; j++) {
+                for(int k = 0; k < n; k += m << 1) {
+                    mint<mod> s = a[j | k], t = w * a[j | k | m];
+                    a[j | k] = s + t;
+                    a[j | k | m] = s - t;
+                }
+                w *= wn;
+            }
         }
         return a;
     }
