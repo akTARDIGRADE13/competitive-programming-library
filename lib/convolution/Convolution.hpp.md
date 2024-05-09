@@ -76,20 +76,20 @@ data:
     \ - 1) / ds[i]) == 1) {\n                    ok = false;\n                   \
     \ break;\n                }\n            }\n            if(ok) {\n           \
     \     return ret;\n            }\n            ret++;\n        }\n        return\
-    \ ret;\n    }\n\n    // \u30D0\u30BF\u30D5\u30E9\u30A4\u6F14\u7B97\n    std::vector<mint<mod>>\
-    \ ntt(std::vector<mint<mod>> a, int d, bool inv = false) {\n        int n = a.size();\n\
-    \        if(n == 1) return a;\n        for(int i = 0; i < n; i++) {\n        \
-    \    int j = 0;\n            for(int k = 0; k < d; k++) {\n                if(i\
-    \ >> k & 1) {\n                    j |= 1 << (d - 1 - k);\n                }\n\
-    \            }\n            if(i < j) {\n                std::swap(a[i], a[j]);\n\
-    \            }\n        }\n        for(int i = 0; i < d; i++) {\n            int\
-    \ m = 1 << i;\n            mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n\
-    \            for(int j = 0; j < m; j++) {\n                for(int k = 0; k <\
-    \ n; k += m << 1) {\n                    mint<mod> s = a[j | k], t = w * a[j |\
-    \ k | m];\n                    a[j | k] = s + t;\n                    a[j | k\
-    \ | m] = s - t;\n                }\n                w *= wn;\n            }\n\
-    \        }\n        return a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>>\
-    \ root, inv_root;\n};\n\n}\n"
+    \ ret;\n    }\n\n    std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int\
+    \ d, bool inv = false) {\n        int n = a.size();\n        if(n == 1) return\
+    \ a;\n        for(int i = 0; i < n; i++) {\n            int j = 0;\n         \
+    \   for(int k = 0; k < d; k++) {\n                if(i >> k & 1) {\n         \
+    \           j |= 1 << (d - 1 - k);\n                }\n            }\n       \
+    \     if(i < j) {\n                std::swap(a[i], a[j]);\n            }\n   \
+    \     }\n        for(int i = 0; i < d; i++) {\n            int m = 1 << i;\n \
+    \           mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n            for(int\
+    \ j = 0; j < m; j++) {\n                for(int k = 0; k < n; k += m << 1) {\n\
+    \                    mint<mod> s = a[j | k], t = w * a[j | k | m];\n         \
+    \           a[j | k] = s + t;\n                    a[j | k | m] = s - t;\n   \
+    \             }\n                w *= wn;\n            }\n        }\n        return\
+    \ a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>> root, inv_root;\n\
+    };\n\n}\n"
   code: "#pragma once\n\n#include \"lib/math/ModInt/mint.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <vector>\n\nnamespace akTARDIGRADE13{\n\ntemplate\
     \ <int mod>\nstruct NTT{\n   \n    NTT() {\n        pr = get_pr();\n        depth\
@@ -121,26 +121,26 @@ data:
     \ - 1) / ds[i]) == 1) {\n                    ok = false;\n                   \
     \ break;\n                }\n            }\n            if(ok) {\n           \
     \     return ret;\n            }\n            ret++;\n        }\n        return\
-    \ ret;\n    }\n\n    // \u30D0\u30BF\u30D5\u30E9\u30A4\u6F14\u7B97\n    std::vector<mint<mod>>\
-    \ ntt(std::vector<mint<mod>> a, int d, bool inv = false) {\n        int n = a.size();\n\
-    \        if(n == 1) return a;\n        for(int i = 0; i < n; i++) {\n        \
-    \    int j = 0;\n            for(int k = 0; k < d; k++) {\n                if(i\
-    \ >> k & 1) {\n                    j |= 1 << (d - 1 - k);\n                }\n\
-    \            }\n            if(i < j) {\n                std::swap(a[i], a[j]);\n\
-    \            }\n        }\n        for(int i = 0; i < d; i++) {\n            int\
-    \ m = 1 << i;\n            mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n\
-    \            for(int j = 0; j < m; j++) {\n                for(int k = 0; k <\
-    \ n; k += m << 1) {\n                    mint<mod> s = a[j | k], t = w * a[j |\
-    \ k | m];\n                    a[j | k] = s + t;\n                    a[j | k\
-    \ | m] = s - t;\n                }\n                w *= wn;\n            }\n\
-    \        }\n        return a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>>\
-    \ root, inv_root;\n};\n\n}"
+    \ ret;\n    }\n\n    std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int\
+    \ d, bool inv = false) {\n        int n = a.size();\n        if(n == 1) return\
+    \ a;\n        for(int i = 0; i < n; i++) {\n            int j = 0;\n         \
+    \   for(int k = 0; k < d; k++) {\n                if(i >> k & 1) {\n         \
+    \           j |= 1 << (d - 1 - k);\n                }\n            }\n       \
+    \     if(i < j) {\n                std::swap(a[i], a[j]);\n            }\n   \
+    \     }\n        for(int i = 0; i < d; i++) {\n            int m = 1 << i;\n \
+    \           mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n            for(int\
+    \ j = 0; j < m; j++) {\n                for(int k = 0; k < n; k += m << 1) {\n\
+    \                    mint<mod> s = a[j | k], t = w * a[j | k | m];\n         \
+    \           a[j | k] = s + t;\n                    a[j | k | m] = s - t;\n   \
+    \             }\n                w *= wn;\n            }\n        }\n        return\
+    \ a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>> root, inv_root;\n\
+    };\n\n}"
   dependsOn:
   - lib/math/ModInt/mint.hpp
   isVerificationFile: false
   path: lib/convolution/Convolution.hpp
   requiredBy: []
-  timestamp: '2024-05-09 09:39:26+09:00'
+  timestamp: '2024-05-09 09:42:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/convolution/yosupo_convolution_mod.test.cpp
