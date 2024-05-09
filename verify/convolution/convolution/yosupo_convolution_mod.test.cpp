@@ -16,8 +16,9 @@ int main() {
     akTARDIGRADE13::NTT<998244353> convolution;
     auto c = convolution.multiply(a, b);
     for(int i = 0; i < n + m - 1; ++i) {
-        std::cout << c[i] << " \n"[i == n + m - 2];
+        std::cout << c[i] << ' ';
     }
+    std::cout << std::endl;
 
     return 0;
 }
