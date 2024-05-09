@@ -93,7 +93,6 @@ private:
         return ret;
     }
 
-    // バタフライ演算
     std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int d, bool inv = false) {
         int n = a.size();
         if(n == 1) return a;
