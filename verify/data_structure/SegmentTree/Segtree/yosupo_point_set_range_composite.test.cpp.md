@@ -36,37 +36,37 @@ data:
     \                vr = fx(val[--r], vr);\n            l >>= 1;\n            r >>=\
     \ 1;\n        }\n        return fx(vl, vr);\n    }\n\n  private:\n    int n;\n\
     \    std::vector<T> val;\n    std::function<T(T, T)> fx;\n    const T ex;\n};\n\
-    \n} // namespace akTARDIGRADE13\n#line 2 \"lib/math/ModInt/mint.hpp\"\n\n#line\
-    \ 4 \"lib/math/ModInt/mint.hpp\"\n#include <iostream>\n\nnamespace akTARDIGRADE13\
-    \ {\n\ntemplate <int mod> struct mint {\n    long long x;\n\n    mint(long long\
-    \ x = 0) : x(normalize(x)) {\n        static_assert(mod > 0, \"modulus must be\
-    \ positive\");\n        static_assert(mod < (1 << 30), \"modulus must be small\
-    \ than 2*30\");\n    }\n\n    mint &operator++() {\n        if(++x == mod)\n \
-    \           x = 0;\n        return *this;\n    }\n\n    mint operator++(int) {\n\
-    \        mint result(*this);\n        ++(*this);\n        return result;\n   \
-    \ }\n\n    mint &operator--() {\n        if(--x < 0)\n            x += mod;\n\
-    \        return *this;\n    }\n\n    mint operator--(int) {\n        mint result(*this);\n\
-    \        --(*this);\n        return result;\n    }\n\n    mint &operator+=(const\
-    \ mint &a) {\n        if((x += a.x) >= mod)\n            x -= mod;\n        return\
-    \ *this;\n    }\n\n    mint &operator-=(const mint &a) {\n        if((x += mod\
-    \ - a.x) >= mod)\n            x -= mod;\n        return *this;\n    }\n\n    mint\
-    \ &operator*=(const mint &a) {\n        x = (x * a.x) % mod;\n        return *this;\n\
-    \    }\n\n    mint &operator/=(const mint &a) { return *this *= a.inv(); }\n\n\
-    \    mint operator-() const { return mint(-x); }\n    mint operator+(const mint\
-    \ &a) const { return mint(*this) += a; }\n    mint operator-(const mint &a) const\
-    \ { return mint(*this) -= a; }\n    mint operator*(const mint &a) const { return\
-    \ mint(*this) *= a; }\n    mint operator/(const mint &a) const { return mint(*this)\
-    \ /= a; }\n\n    bool operator==(const mint &a) const { return x == a.x; }\n \
-    \   bool operator!=(const mint &a) const { return x != a.x; }\n\n    mint pow(long\
-    \ long t) const {\n        assert(t >= 0);\n        mint res(1), a(*this);\n \
-    \       while(t > 0) {\n            if(t & 1)\n                res *= a;\n   \
-    \         a *= a;\n            t >>= 1;\n        }\n        return res;\n    }\n\
-    \n    mint inv() const { return pow(mod - 2); }\n\n    static long long normalize(long\
-    \ long n) {\n        n %= mod;\n        if(n < 0)\n            n += mod;\n   \
-    \     return n;\n    }\n\n    friend std::istream &operator>>(std::istream &is,\
-    \ mint &m) {\n        is >> m.x;\n        m.x = normalize(m.x);\n        return\
-    \ is;\n    }\n\n    friend std::ostream &operator<<(std::ostream &os, const mint\
-    \ &m) {\n        os << m.x;\n        return os;\n    }\n};\n\n}\n#line 5 \"verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp\"\
+    \n}\n#line 2 \"lib/math/ModInt/mint.hpp\"\n\n#line 4 \"lib/math/ModInt/mint.hpp\"\
+    \n#include <iostream>\n\nnamespace akTARDIGRADE13 {\n\ntemplate <int mod> struct\
+    \ mint {\n    long long x;\n\n    mint(long long x = 0) : x(normalize(x)) {\n\
+    \        static_assert(mod > 0, \"modulus must be positive\");\n        static_assert(mod\
+    \ < (1 << 30), \"modulus must be small than 2*30\");\n    }\n\n    mint &operator++()\
+    \ {\n        if(++x == mod)\n            x = 0;\n        return *this;\n    }\n\
+    \n    mint operator++(int) {\n        mint result(*this);\n        ++(*this);\n\
+    \        return result;\n    }\n\n    mint &operator--() {\n        if(--x < 0)\n\
+    \            x += mod;\n        return *this;\n    }\n\n    mint operator--(int)\
+    \ {\n        mint result(*this);\n        --(*this);\n        return result;\n\
+    \    }\n\n    mint &operator+=(const mint &a) {\n        if((x += a.x) >= mod)\n\
+    \            x -= mod;\n        return *this;\n    }\n\n    mint &operator-=(const\
+    \ mint &a) {\n        if((x += mod - a.x) >= mod)\n            x -= mod;\n   \
+    \     return *this;\n    }\n\n    mint &operator*=(const mint &a) {\n        x\
+    \ = (x * a.x) % mod;\n        return *this;\n    }\n\n    mint &operator/=(const\
+    \ mint &a) { return *this *= a.inv(); }\n\n    mint operator-() const { return\
+    \ mint(-x); }\n    mint operator+(const mint &a) const { return mint(*this) +=\
+    \ a; }\n    mint operator-(const mint &a) const { return mint(*this) -= a; }\n\
+    \    mint operator*(const mint &a) const { return mint(*this) *= a; }\n    mint\
+    \ operator/(const mint &a) const { return mint(*this) /= a; }\n\n    bool operator==(const\
+    \ mint &a) const { return x == a.x; }\n    bool operator!=(const mint &a) const\
+    \ { return x != a.x; }\n\n    mint pow(long long t) const {\n        assert(t\
+    \ >= 0);\n        mint res(1), a(*this);\n        while(t > 0) {\n           \
+    \ if(t & 1)\n                res *= a;\n            a *= a;\n            t >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    mint inv() const { return pow(mod\
+    \ - 2); }\n\n    static long long normalize(long long n) {\n        n %= mod;\n\
+    \        if(n < 0)\n            n += mod;\n        return n;\n    }\n\n    friend\
+    \ std::istream &operator>>(std::istream &is, mint &m) {\n        is >> m.x;\n\
+    \        m.x = normalize(m.x);\n        return is;\n    }\n\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const mint &m) {\n        os << m.x;\n       \
+    \ return os;\n    }\n};\n\n}\n#line 5 \"verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp\"\
     \n\n#line 8 \"verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp\"\
     \n#include <tuple>\n#line 10 \"verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp\"\
     \n\nusing mint = akTARDIGRADE13::mint<998244353>;\n\nint main() {\n    int n,\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: true
   path: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-03-17 10:08:50+09:00'
+  timestamp: '2024-03-17 10:14:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp

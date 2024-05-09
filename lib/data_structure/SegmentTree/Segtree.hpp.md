@@ -28,7 +28,7 @@ data:
     \                vr = fx(val[--r], vr);\n            l >>= 1;\n            r >>=\
     \ 1;\n        }\n        return fx(vl, vr);\n    }\n\n  private:\n    int n;\n\
     \    std::vector<T> val;\n    std::function<T(T, T)> fx;\n    const T ex;\n};\n\
-    \n} // namespace akTARDIGRADE13\n"
+    \n}\n"
   code: "#pragma once\n\n#include <cassert>\n#include <functional>\n#include <vector>\n\
     \nnamespace akTARDIGRADE13 {\n\ntemplate <typename T> struct Segtree {\n    explicit\
     \ Segtree(int _n, std::function<T(T, T)> _fx, T _ex)\n        : fx(_fx), ex(_ex)\
@@ -45,12 +45,12 @@ data:
     \            if(r & 1)\n                vr = fx(val[--r], vr);\n            l\
     \ >>= 1;\n            r >>= 1;\n        }\n        return fx(vl, vr);\n    }\n\
     \n  private:\n    int n;\n    std::vector<T> val;\n    std::function<T(T, T)>\
-    \ fx;\n    const T ex;\n};\n\n} // namespace akTARDIGRADE13"
+    \ fx;\n    const T ex;\n};\n\n}"
   dependsOn: []
   isVerificationFile: false
   path: lib/data_structure/SegmentTree/Segtree.hpp
   requiredBy: []
-  timestamp: '2024-03-17 10:08:50+09:00'
+  timestamp: '2024-03-17 10:14:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp

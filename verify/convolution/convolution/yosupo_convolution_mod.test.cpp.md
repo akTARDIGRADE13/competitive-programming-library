@@ -51,51 +51,50 @@ data:
     \ is;\n    }\n\n    friend std::ostream &operator<<(std::ostream &os, const mint\
     \ &m) {\n        os << m.x;\n        return os;\n    }\n};\n\n}\n#line 4 \"lib/convolution/Convolution.hpp\"\
     \n\n#include <algorithm>\n#line 7 \"lib/convolution/Convolution.hpp\"\n#include\
-    \ <vector>\n\nnamespace akTARDIGRADE13{\n\ntemplate <int mod>\nstruct NTT{\n \
-    \  \n    NTT() {\n        pr = get_pr();\n        depth = __builtin_ctz(mod -\
-    \ 1);\n        root.assign(depth, 0);\n        inv_root.assign(depth, 0);\n  \
-    \      root[depth - 1] = mint<mod>(pr).pow((mod - 1) / (1<<depth));\n        inv_root[depth\
-    \ - 1] = root[depth - 1].inv();\n        for(int i = depth - 2; i >= 0; i--) {\n\
-    \            root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
-    \ + 1] * inv_root[i + 1];\n        }\n    }\n    \n    std::vector<mint<mod>>\
-    \ multiply(std::vector<mint<mod>> a, std::vector<mint<mod>> b) {\n        int\
-    \ n = a.size() + b.size() - 1;\n        int m = 1;\n        while(m <= n) {\n\
-    \            m <<= 1;\n        }\n        a.resize(m, 0);\n        b.resize(m,\
-    \ 0);\n        int d = 1;\n        while((1 << d) < m) {\n            d++;\n \
-    \       }\n        a = ntt(a, d), b = ntt(b, d);\n        for(int i = 0; i < m;\
-    \ i++) {\n            a[i] *= b[i];\n        }\n        a = ntt(a, d, true);\n\
-    \        mint<mod> inv = mint<mod>(m).inv();\n        for(int i = 0; i < m; i++)\
-    \ {\n            a[i] *= inv;\n        }\n        a.resize(n);\n        return\
-    \ a;\n    }\n\nprivate:\n    int get_pr() {\n        if constexpr(mod == 998244353)\
-    \ {\n            return 3;\n        }else if constexpr(mod == 469762049){\n  \
-    \          return 3;\n        }else if constexpr(mod == 167772161){\n        \
-    \    return 3;\n        }else if constexpr(mod == 754974721){\n            return\
-    \ 11;\n        }else if constexpr(mod == 1224736769){\n            return 3;\n\
-    \        }\n        long long ds[32] = {};\n        int idx = 0;\n        long\
-    \ long m = mod - 1;\n        for(long long i = 2; i * i <= m; i++) {\n       \
-    \     if(m % i == 0) {\n                ds[idx++] = i;\n                while(m\
-    \ % i == 0) {\n                    m /= i;\n                }\n            }\n\
-    \        }\n        if(m > 1) {\n            ds[idx++] = m;\n        }\n     \
-    \   int ret = 2;\n        while(true){\n            bool ok = true;\n        \
-    \    for(int i = 0; i < idx; i++) {\n                if(mint<mod>(ret).pow((mod\
+    \ <vector>\n\nnamespace akTARDIGRADE13 {\n\ntemplate <int mod> struct NTT {\n\n\
+    \    NTT() : pr(get_pr()) {}\n\n    std::vector<mint<mod>> multiply(std::vector<mint<mod>>\
+    \ a,\n                                    std::vector<mint<mod>> b) {\n      \
+    \  int n = a.size() + b.size() - 1;\n        int m = 1;\n        while(m < n)\
+    \ {\n            m <<= 1;\n        }\n        a.resize(m, 0);\n        b.resize(m,\
+    \ 0);\n        ntt(a), ntt(b);\n        for(int i = 0; i < m; i++) {\n       \
+    \     a[i] *= b[i];\n        }\n        intt(a);\n        a.resize(n);\n     \
+    \   return a;\n    }\n\nprivate:\n    int get_pr() {\n        if constexpr(mod\
+    \ == 998244353) {\n            return 3;\n        } else if constexpr(mod == 469762049)\
+    \ {\n            return 3;\n        } else if constexpr(mod == 167772161) {\n\
+    \            return 3;\n        } else if constexpr(mod == 754974721) {\n    \
+    \        return 11;\n        } else if constexpr(mod == 1224736769) {\n      \
+    \      return 3;\n        }\n        long long ds[32] = {};\n        int idx =\
+    \ 0;\n        long long m = mod - 1;\n        for(long long i = 2; i * i <= m;\
+    \ i++) {\n            if(m % i == 0) {\n                ds[idx++] = i;\n     \
+    \           while(m % i == 0) {\n                    m /= i;\n               \
+    \ }\n            }\n        }\n        if(m > 1) {\n            ds[idx++] = m;\n\
+    \        }\n        int ret = 2;\n        while(true) {\n            bool ok =\
+    \ true;\n            for(int i = 0; i < idx; i++) {\n                if(mint<mod>(ret).pow((mod\
     \ - 1) / ds[i]) == 1) {\n                    ok = false;\n                   \
     \ break;\n                }\n            }\n            if(ok) {\n           \
     \     return ret;\n            }\n            ret++;\n        }\n        return\
-    \ ret;\n    }\n\n    std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int\
-    \ d, bool inv = false) {\n        int n = a.size();\n        if(n == 1) return\
-    \ a;\n        for(int i = 0; i < n; i++) {\n            int j = 0;\n         \
-    \   for(int k = 0; k < d; k++) {\n                if(i >> k & 1) {\n         \
-    \           j |= 1 << (d - 1 - k);\n                }\n            }\n       \
-    \     if(i < j) {\n                std::swap(a[i], a[j]);\n            }\n   \
-    \     }\n        for(int i = 0; i < d; i++) {\n            int m = 1 << i;\n \
-    \           mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n            for(int\
-    \ j = 0; j < m; j++) {\n                for(int k = 0; k < n; k += m << 1) {\n\
-    \                    mint<mod> s = a[j | k], t = w * a[j | k | m];\n         \
-    \           a[j | k] = s + t;\n                    a[j | k | m] = s - t;\n   \
-    \             }\n                w *= wn;\n            }\n        }\n        return\
-    \ a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>> root, inv_root;\n\
-    };\n\n}\n#line 5 \"verify/convolution/convolution/yosupo_convolution_mod.test.cpp\"\
-    \n\nusing mint = akTARDIGRADE13::mint<998244353>;\n\n#line 9 \"verify/convolution/convolution/yosupo_convolution_mod.test.cpp\"\
+    \ ret;\n    }\n\n    void ntt(std::vector<mint<mod>> &a) {\n        int n = a.size();\n\
+    \        int width = n;\n        int offset = width >> 1;\n        while(width\
+    \ > 1) {\n            mint<mod> w = get_root(width);\n            for(int top\
+    \ = 0; top < n; top += width) {\n                mint<mod> ws = 1;\n         \
+    \       for(int i = top; i < top + offset; i++) {\n                    mint<mod>\
+    \ s = a[i];\n                    mint<mod> t = a[i + offset];\n              \
+    \      a[i] = s + t;\n                    a[i + offset] = (s - t) * ws;\n    \
+    \                ws *= w;\n                }\n            }\n            width\
+    \ >>= 1;\n            offset >>= 1;\n        }\n    }\n\n    void intt(std::vector<mint<mod>>\
+    \ &a) {\n        int n = a.size();\n        int width = 2;\n        int offset\
+    \ = 1;\n        while(width <= n) {\n            mint<mod> w = get_root(width).inv();\n\
+    \            for(int top = 0; top < n; top += width) {\n                mint<mod>\
+    \ ws = 1;\n                for(int i = top; i < top + offset; i++) {\n       \
+    \             mint<mod> s = a[i];\n                    mint<mod> t = a[i + offset]\
+    \ * ws;\n                    a[i] = s + t;\n                    a[i + offset]\
+    \ = s - t;\n                    ws *= w;\n                }\n            }\n \
+    \           width <<= 1;\n            offset <<= 1;\n        }\n        mint<mod>\
+    \ inv = mint<mod>(n).inv();\n        for(auto &i : a) {\n            i *= inv;\n\
+    \        }\n    }\n\n    mint<mod> get_root(int n) { return mint<mod>(pr).pow((mod\
+    \ - 1) / n); }\n\n    int pr;\n};\n\n} // namespace akTARDIGRADE13\n#line 5 \"\
+    verify/convolution/convolution/yosupo_convolution_mod.test.cpp\"\n\nusing mint\
+    \ = akTARDIGRADE13::mint<998244353>;\n\n#line 9 \"verify/convolution/convolution/yosupo_convolution_mod.test.cpp\"\
     \n\nint main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector<mint>\
     \ a(n), b(m);\n    for(int i = 0; i < n; ++i) std::cin >> a[i];\n    for(int i\
     \ = 0; i < m; ++i) std::cin >> b[i];\n    akTARDIGRADE13::NTT<998244353> convolution;\n\
@@ -117,7 +116,7 @@ data:
   isVerificationFile: true
   path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   requiredBy: []
-  timestamp: '2024-05-09 09:47:00+09:00'
+  timestamp: '2024-05-09 12:41:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
