@@ -1,5 +1,5 @@
 ---
-title: convolution
+title: Convolution
 documentation_of: //lib/convolution/Convolution.hpp
 ---
 
