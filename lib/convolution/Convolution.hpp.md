@@ -5,13 +5,16 @@ data:
     path: lib/math/ModInt/mint.hpp
     title: mint
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
+    title: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"lib/convolution/convolution.hpp\"\n\n#line 2 \"lib/math/ModInt/mint.hpp\"\
+  bundledCode: "#line 2 \"lib/convolution/Convolution.hpp\"\n\n#line 2 \"lib/math/ModInt/mint.hpp\"\
     \n\n#include <cassert>\n#include <iostream>\n\nnamespace akTARDIGRADE13 {\n\n\
     template <int mod> struct mint {\n    long long x;\n\n    mint(long long x = 0)\
     \ : x(normalize(x)) {\n        static_assert(mod > 0, \"modulus must be positive\"\
@@ -41,8 +44,8 @@ data:
     \     return n;\n    }\n\n    friend std::istream &operator>>(std::istream &is,\
     \ mint &m) {\n        is >> m.x;\n        m.x = normalize(m.x);\n        return\
     \ is;\n    }\n\n    friend std::ostream &operator<<(std::ostream &os, const mint\
-    \ &m) {\n        os << m.x;\n        return os;\n    }\n};\n\n}\n#line 4 \"lib/convolution/convolution.hpp\"\
-    \n\n#include <algorithm>\n#line 7 \"lib/convolution/convolution.hpp\"\n#include\
+    \ &m) {\n        os << m.x;\n        return os;\n    }\n};\n\n}\n#line 4 \"lib/convolution/Convolution.hpp\"\
+    \n\n#include <algorithm>\n#line 7 \"lib/convolution/Convolution.hpp\"\n#include\
     \ <vector>\n\nnamespace akTARDIGRADE13{\n\ntemplate <int mod>\nstruct NTT{\n \
     \  \n    NTT() {\n        pr = get_pr();\n        depth = __builtin_ctz(mod -\
     \ 1);\n        root.assign(depth, 0);\n        inv_root.assign(depth, 0);\n  \
@@ -135,15 +138,17 @@ data:
   dependsOn:
   - lib/math/ModInt/mint.hpp
   isVerificationFile: false
-  path: lib/convolution/convolution.hpp
+  path: lib/convolution/Convolution.hpp
   requiredBy: []
-  timestamp: '2024-05-09 09:16:57+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: lib/convolution/convolution.hpp
+  timestamp: '2024-05-09 09:39:26+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/convolution/convolution/yosupo_convolution_mod.test.cpp
+documentation_of: lib/convolution/Convolution.hpp
 layout: document
-redirect_from:
-- /library/lib/convolution/convolution.hpp
-- /library/lib/convolution/convolution.hpp.html
-title: lib/convolution/convolution.hpp
+title: convolution
 ---
+
+## 概要
+
+NTT friendly な素数に対応した畳み込みのライブラリ

@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: lib/convolution/convolution.hpp
-    title: lib/convolution/convolution.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/convolution/Convolution.hpp
+    title: convolution
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
+    title: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
     title: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
@@ -79,10 +82,11 @@ data:
   isVerificationFile: false
   path: lib/math/ModInt/mint.hpp
   requiredBy:
-  - lib/convolution/convolution.hpp
+  - lib/convolution/Convolution.hpp
   timestamp: '2024-03-17 09:36:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   - verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
 documentation_of: lib/math/ModInt/mint.hpp
 layout: document
