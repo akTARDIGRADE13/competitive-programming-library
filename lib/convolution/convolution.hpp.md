@@ -142,9 +142,8 @@ data:
   verifiedWith: []
 documentation_of: lib/convolution/convolution.hpp
 layout: document
-title: convolution
+redirect_from:
+- /library/lib/convolution/convolution.hpp
+- /library/lib/convolution/convolution.hpp.html
+title: lib/convolution/convolution.hpp
 ---
-
-## 概要
-
-NTT friendly な素数に対応した畳み込みのライブラリ

@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: lib/convolution/convolution.hpp
-    title: convolution
+    title: lib/convolution/convolution.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/data_structure/SegmentTree/Segtree/yosupo_point_set_range_composite.test.cpp
