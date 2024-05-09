@@ -6,45 +6,26 @@
 #include <cassert>
 #include <vector>
 
-namespace akTARDIGRADE13{
+namespace akTARDIGRADE13 {
 
-template <int mod>
-struct NTT{
-   
-    NTT() {
-        pr = get_pr();
-        depth = __builtin_ctz(mod - 1);
-        root.assign(depth, 0);
-        inv_root.assign(depth, 0);
-        root[depth - 1] = mint<mod>(pr).pow((mod - 1) / (1<<depth));
-        inv_root[depth - 1] = root[depth - 1].inv();
-        for(int i = depth - 2; i >= 0; i--) {
-            root[i] = root[i + 1] * root[i + 1];
-            inv_root[i] = inv_root[i + 1] * inv_root[i + 1];
-        }
-    }
-    
-    std::vector<mint<mod>> multiply(std::vector<mint<mod>> a, std::vector<mint<mod>> b) {
+template <int mod> struct NTT {
+
+    NTT() : pr(get_pr()) {}
+
+    std::vector<mint<mod>> multiply(std::vector<mint<mod>> a,
+                                    std::vector<mint<mod>> b) {
         int n = a.size() + b.size() - 1;
         int m = 1;
-        while(m <= n) {
+        while(m < n) {
             m <<= 1;
         }
         a.resize(m, 0);
         b.resize(m, 0);
-        int d = 1;
-        while((1 << d) < m) {
-            d++;
-        }
-        a = ntt(a, d), b = ntt(b, d);
+        ntt(a), ntt(b);
         for(int i = 0; i < m; i++) {
             a[i] *= b[i];
         }
-        a = ntt(a, d, true);
-        mint<mod> inv = mint<mod>(m).inv();
-        for(int i = 0; i < m; i++) {
-            a[i] *= inv;
-        }
+        intt(a);
         a.resize(n);
         return a;
     }
@@ -53,13 +34,13 @@ private:
     int get_pr() {
         if constexpr(mod == 998244353) {
             return 3;
-        }else if constexpr(mod == 469762049){
+        } else if constexpr(mod == 469762049) {
             return 3;
-        }else if constexpr(mod == 167772161){
+        } else if constexpr(mod == 167772161) {
             return 3;
-        }else if constexpr(mod == 754974721){
+        } else if constexpr(mod == 754974721) {
             return 11;
-        }else if constexpr(mod == 1224736769){
+        } else if constexpr(mod == 1224736769) {
             return 3;
         }
         long long ds[32] = {};
@@ -77,7 +58,7 @@ private:
             ds[idx++] = m;
         }
         int ret = 2;
-        while(true){
+        while(true) {
             bool ok = true;
             for(int i = 0; i < idx; i++) {
                 if(mint<mod>(ret).pow((mod - 1) / ds[i]) == 1) {
@@ -93,38 +74,55 @@ private:
         return ret;
     }
 
-    std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int d, bool inv = false) {
+    void ntt(std::vector<mint<mod>> &a) {
         int n = a.size();
-        if(n == 1) return a;
-        for(int i = 0; i < n; i++) {
-            int j = 0;
-            for(int k = 0; k < d; k++) {
-                if(i >> k & 1) {
-                    j |= 1 << (d - 1 - k);
+        int width = n;
+        int offset = width >> 1;
+        while(width > 1) {
+            mint<mod> w = get_root(width);
+            for(int top = 0; top < n; top += width) {
+                mint<mod> ws = 1;
+                for(int i = top; i < top + offset; i++) {
+                    mint<mod> s = a[i];
+                    mint<mod> t = a[i + offset];
+                    a[i] = s + t;
+                    a[i + offset] = (s - t) * ws;
+                    ws *= w;
                 }
             }
-            if(i < j) {
-                std::swap(a[i], a[j]);
-            }
+            width >>= 1;
+            offset >>= 1;
         }
-        for(int i = 0; i < d; i++) {
-            int m = 1 << i;
-            mint<mod> w = 1, wn = (inv ? inv_root : root)[i];
-            for(int j = 0; j < m; j++) {
-                for(int k = 0; k < n; k += m << 1) {
-                    mint<mod> s = a[j | k], t = w * a[j | k | m];
-                    a[j | k] = s + t;
-                    a[j | k | m] = s - t;
-                }
-                w *= wn;
-            }
-        }
-        return a;
     }
 
+    void intt(std::vector<mint<mod>> &a) {
+        int n = a.size();
+        int width = 2;
+        int offset = 1;
+        while(width <= n) {
+            mint<mod> w = get_root(width).inv();
+            for(int top = 0; top < n; top += width) {
+                mint<mod> ws = 1;
+                for(int i = top; i < top + offset; i++) {
+                    mint<mod> s = a[i];
+                    mint<mod> t = a[i + offset] * ws;
+                    a[i] = s + t;
+                    a[i + offset] = s - t;
+                    ws *= w;
+                }
+            }
+            width <<= 1;
+            offset <<= 1;
+        }
+        mint<mod> inv = mint<mod>(n).inv();
+        for(auto &i : a) {
+            i *= inv;
+        }
+    }
+
+    mint<mod> get_root(int n) { return mint<mod>(pr).pow((mod - 1) / n); }
+
     int pr;
-    int depth;
-    std::vector<mint<mod>> root, inv_root;
 };
 
-}
+} // namespace akTARDIGRADE13
