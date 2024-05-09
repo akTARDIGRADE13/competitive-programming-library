@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 
-#include "lib/convolution/convolution.hpp"
+#include "lib/convolution/Convolution.hpp"
 #include "lib/math/ModInt/mint.hpp"
 
 using mint = akTARDIGRADE13::mint<998244353>;
