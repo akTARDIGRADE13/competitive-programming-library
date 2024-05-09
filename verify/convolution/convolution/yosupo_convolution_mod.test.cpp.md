@@ -100,8 +100,8 @@ data:
     \ a(n), b(m);\n    for(int i = 0; i < n; ++i) std::cin >> a[i];\n    for(int i\
     \ = 0; i < m; ++i) std::cin >> b[i];\n    akTARDIGRADE13::NTT<998244353> convolution;\n\
     \    auto c = convolution.multiply(a, b);\n    for(int i = 0; i < n + m - 1; ++i)\
-    \ {\n        std::cout << c[i] << \" \\n\"[i == n + m - 2];\n    }\n\n    return\
-    \ 0;\n}\n"
+    \ {\n        std::cout << c[i] << ' ';\n    }\n    std::cout << std::endl;\n\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
     \ \"lib/convolution/Convolution.hpp\"\n#include \"lib/math/ModInt/mint.hpp\"\n\
     \nusing mint = akTARDIGRADE13::mint<998244353>;\n\n#include <iostream>\n\nint\
@@ -109,15 +109,15 @@ data:
     \ b(m);\n    for(int i = 0; i < n; ++i) std::cin >> a[i];\n    for(int i = 0;\
     \ i < m; ++i) std::cin >> b[i];\n    akTARDIGRADE13::NTT<998244353> convolution;\n\
     \    auto c = convolution.multiply(a, b);\n    for(int i = 0; i < n + m - 1; ++i)\
-    \ {\n        std::cout << c[i] << \" \\n\"[i == n + m - 2];\n    }\n\n    return\
-    \ 0;\n}"
+    \ {\n        std::cout << c[i] << ' ';\n    }\n    std::cout << std::endl;\n\n\
+    \    return 0;\n}"
   dependsOn:
   - lib/convolution/Convolution.hpp
   - lib/math/ModInt/mint.hpp
   isVerificationFile: true
   path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   requiredBy: []
-  timestamp: '2024-05-09 09:42:20+09:00'
+  timestamp: '2024-05-09 09:47:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
