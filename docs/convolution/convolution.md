@@ -1,6 +1,6 @@
 ---
 title: convolution
-documentation_of: //lib/convolution/convolution.hpp
+documentation_of: //lib/convolution/Convolution.hpp
 ---
 
 ## 概要
