@@ -5,13 +5,10 @@ data:
     path: lib/math/ModInt/mint.hpp
     title: mint
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
-    title: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"lib/convolution/convolution.hpp\"\n\n#line 2 \"lib/math/ModInt/mint.hpp\"\
@@ -57,10 +54,55 @@ data:
     \ n = a.size() + b.size() - 1;\n        int m = 1;\n        while(m <= n) {\n\
     \            m <<= 1;\n        }\n        a.resize(m, 0);\n        b.resize(m,\
     \ 0);\n        int d = 1;\n        while((1 << d) < m) {\n            d++;\n \
-    \       }\n        a = ntt(a, d - 1), b = ntt(b, d - 1);\n        for(int i =\
-    \ 0; i < m; i++) {\n            a[i] *= b[i];\n        }\n        a = ntt(a, d\
-    \ - 1, true);\n        mint<mod> inv = mint<mod>(m).inv();\n        for(int i\
-    \ = 0; i < m; i++) {\n            a[i] *= inv;\n        }\n        a.resize(n);\n\
+    \       }\n        a = ntt(a, d), b = ntt(b, d);\n        for(int i = 0; i < m;\
+    \ i++) {\n            a[i] *= b[i];\n        }\n        a = ntt(a, d, true);\n\
+    \        mint<mod> inv = mint<mod>(m).inv();\n        for(int i = 0; i < m; i++)\
+    \ {\n            a[i] *= inv;\n        }\n        a.resize(n);\n        return\
+    \ a;\n    }\n\nprivate:\n    int get_pr() {\n        if constexpr(mod == 998244353)\
+    \ {\n            return 3;\n        }else if constexpr(mod == 469762049){\n  \
+    \          return 3;\n        }else if constexpr(mod == 167772161){\n        \
+    \    return 3;\n        }else if constexpr(mod == 754974721){\n            return\
+    \ 11;\n        }else if constexpr(mod == 1224736769){\n            return 3;\n\
+    \        }\n        long long ds[32] = {};\n        int idx = 0;\n        long\
+    \ long m = mod - 1;\n        for(long long i = 2; i * i <= m; i++) {\n       \
+    \     if(m % i == 0) {\n                ds[idx++] = i;\n                while(m\
+    \ % i == 0) {\n                    m /= i;\n                }\n            }\n\
+    \        }\n        if(m > 1) {\n            ds[idx++] = m;\n        }\n     \
+    \   int ret = 2;\n        while(true){\n            bool ok = true;\n        \
+    \    for(int i = 0; i < idx; i++) {\n                if(mint<mod>(ret).pow((mod\
+    \ - 1) / ds[i]) == 1) {\n                    ok = false;\n                   \
+    \ break;\n                }\n            }\n            if(ok) {\n           \
+    \     return ret;\n            }\n            ret++;\n        }\n        return\
+    \ ret;\n    }\n\n    // \u30D0\u30BF\u30D5\u30E9\u30A4\u6F14\u7B97\n    std::vector<mint<mod>>\
+    \ ntt(std::vector<mint<mod>> a, int d, bool inv = false) {\n        int n = a.size();\n\
+    \        if(n == 1) return a;\n        for(int i = 0; i < n; i++) {\n        \
+    \    int j = 0;\n            for(int k = 0; k < d; k++) {\n                if(i\
+    \ >> k & 1) {\n                    j |= 1 << (d - 1 - k);\n                }\n\
+    \            }\n            if(i < j) {\n                std::swap(a[i], a[j]);\n\
+    \            }\n        }\n        for(int i = 0; i < d; i++) {\n            int\
+    \ m = 1 << i;\n            mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n\
+    \            for(int j = 0; j < m; j++) {\n                for(int k = 0; k <\
+    \ n; k += m << 1) {\n                    mint<mod> s = a[j | k], t = w * a[j |\
+    \ k | m];\n                    a[j | k] = s + t;\n                    a[j | k\
+    \ | m] = s - t;\n                }\n                w *= wn;\n            }\n\
+    \        }\n        return a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>>\
+    \ root, inv_root;\n};\n\n}\n"
+  code: "#pragma once\n\n#include \"lib/math/ModInt/mint.hpp\"\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <vector>\n\nnamespace akTARDIGRADE13{\n\ntemplate\
+    \ <int mod>\nstruct NTT{\n   \n    NTT() {\n        pr = get_pr();\n        depth\
+    \ = __builtin_ctz(mod - 1);\n        root.assign(depth, 0);\n        inv_root.assign(depth,\
+    \ 0);\n        root[depth - 1] = mint<mod>(pr).pow((mod - 1) / (1<<depth));\n\
+    \        inv_root[depth - 1] = root[depth - 1].inv();\n        for(int i = depth\
+    \ - 2; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i + 1];\n    \
+    \        inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n    }\n\
+    \    \n    std::vector<mint<mod>> multiply(std::vector<mint<mod>> a, std::vector<mint<mod>>\
+    \ b) {\n        int n = a.size() + b.size() - 1;\n        int m = 1;\n       \
+    \ while(m <= n) {\n            m <<= 1;\n        }\n        a.resize(m, 0);\n\
+    \        b.resize(m, 0);\n        int d = 1;\n        while((1 << d) < m) {\n\
+    \            d++;\n        }\n        a = ntt(a, d), b = ntt(b, d);\n        for(int\
+    \ i = 0; i < m; i++) {\n            a[i] *= b[i];\n        }\n        a = ntt(a,\
+    \ d, true);\n        mint<mod> inv = mint<mod>(m).inv();\n        for(int i =\
+    \ 0; i < m; i++) {\n            a[i] *= inv;\n        }\n        a.resize(n);\n\
     \        return a;\n    }\n\nprivate:\n    int get_pr() {\n        if constexpr(mod\
     \ == 998244353) {\n            return 3;\n        }else if constexpr(mod == 469762049){\n\
     \            return 3;\n        }else if constexpr(mod == 167772161){\n      \
@@ -76,68 +118,28 @@ data:
     \ - 1) / ds[i]) == 1) {\n                    ok = false;\n                   \
     \ break;\n                }\n            }\n            if(ok) {\n           \
     \     return ret;\n            }\n            ret++;\n        }\n        return\
-    \ ret;\n    }\n\n    std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int\
-    \ d, bool inv = false) {\n        int n = a.size();\n        if(n == 1) return\
-    \ a;\n        std::vector<mint<mod>> even(n >> 1), odd(n >> 1);\n        for(int\
-    \ i = 0; i < n; i++) {\n            if(i & 1) {\n                odd[i >> 1] =\
-    \ a[i];\n            } else {\n                even[i >> 1] = a[i];\n        \
-    \    }\n        }\n        even = ntt(even, d - 1, inv);\n        odd = ntt(odd,\
-    \ d - 1, inv);\n        mint<mod> w = 1, wn = (inv ? inv_root : root)[d];\n  \
-    \      for(int i = 0; i < (n >> 1); i++) {\n            a[i] = even[i] + w * odd[i];\n\
-    \            a[i + (n >> 1)] = even[i] - w * odd[i];\n            w *= wn;\n \
-    \       }\n        return a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>>\
-    \ root, inv_root;\n};\n\n}\n"
-  code: "#pragma once\n\n#include \"lib/math/ModInt/mint.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <vector>\n\nnamespace akTARDIGRADE13{\n\ntemplate\
-    \ <int mod>\nstruct NTT{\n   \n    NTT() {\n        pr = get_pr();\n        depth\
-    \ = __builtin_ctz(mod - 1);\n        root.assign(depth, 0);\n        inv_root.assign(depth,\
-    \ 0);\n        root[depth - 1] = mint<mod>(pr).pow((mod - 1) / (1<<depth));\n\
-    \        inv_root[depth - 1] = root[depth - 1].inv();\n        for(int i = depth\
-    \ - 2; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i + 1];\n    \
-    \        inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n    }\n\
-    \    \n    std::vector<mint<mod>> multiply(std::vector<mint<mod>> a, std::vector<mint<mod>>\
-    \ b) {\n        int n = a.size() + b.size() - 1;\n        int m = 1;\n       \
-    \ while(m <= n) {\n            m <<= 1;\n        }\n        a.resize(m, 0);\n\
-    \        b.resize(m, 0);\n        int d = 1;\n        while((1 << d) < m) {\n\
-    \            d++;\n        }\n        a = ntt(a, d - 1), b = ntt(b, d - 1);\n\
-    \        for(int i = 0; i < m; i++) {\n            a[i] *= b[i];\n        }\n\
-    \        a = ntt(a, d - 1, true);\n        mint<mod> inv = mint<mod>(m).inv();\n\
-    \        for(int i = 0; i < m; i++) {\n            a[i] *= inv;\n        }\n \
-    \       a.resize(n);\n        return a;\n    }\n\nprivate:\n    int get_pr() {\n\
-    \        if constexpr(mod == 998244353) {\n            return 3;\n        }else\
-    \ if constexpr(mod == 469762049){\n            return 3;\n        }else if constexpr(mod\
-    \ == 167772161){\n            return 3;\n        }else if constexpr(mod == 754974721){\n\
-    \            return 11;\n        }else if constexpr(mod == 1224736769){\n    \
-    \        return 3;\n        }\n        long long ds[32] = {};\n        int idx\
-    \ = 0;\n        long long m = mod - 1;\n        for(long long i = 2; i * i <=\
-    \ m; i++) {\n            if(m % i == 0) {\n                ds[idx++] = i;\n  \
-    \              while(m % i == 0) {\n                    m /= i;\n            \
-    \    }\n            }\n        }\n        if(m > 1) {\n            ds[idx++] =\
-    \ m;\n        }\n        int ret = 2;\n        while(true){\n            bool\
-    \ ok = true;\n            for(int i = 0; i < idx; i++) {\n                if(mint<mod>(ret).pow((mod\
-    \ - 1) / ds[i]) == 1) {\n                    ok = false;\n                   \
-    \ break;\n                }\n            }\n            if(ok) {\n           \
-    \     return ret;\n            }\n            ret++;\n        }\n        return\
-    \ ret;\n    }\n\n    std::vector<mint<mod>> ntt(std::vector<mint<mod>> a, int\
-    \ d, bool inv = false) {\n        int n = a.size();\n        if(n == 1) return\
-    \ a;\n        std::vector<mint<mod>> even(n >> 1), odd(n >> 1);\n        for(int\
-    \ i = 0; i < n; i++) {\n            if(i & 1) {\n                odd[i >> 1] =\
-    \ a[i];\n            } else {\n                even[i >> 1] = a[i];\n        \
-    \    }\n        }\n        even = ntt(even, d - 1, inv);\n        odd = ntt(odd,\
-    \ d - 1, inv);\n        mint<mod> w = 1, wn = (inv ? inv_root : root)[d];\n  \
-    \      for(int i = 0; i < (n >> 1); i++) {\n            a[i] = even[i] + w * odd[i];\n\
-    \            a[i + (n >> 1)] = even[i] - w * odd[i];\n            w *= wn;\n \
-    \       }\n        return a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>>\
+    \ ret;\n    }\n\n    // \u30D0\u30BF\u30D5\u30E9\u30A4\u6F14\u7B97\n    std::vector<mint<mod>>\
+    \ ntt(std::vector<mint<mod>> a, int d, bool inv = false) {\n        int n = a.size();\n\
+    \        if(n == 1) return a;\n        for(int i = 0; i < n; i++) {\n        \
+    \    int j = 0;\n            for(int k = 0; k < d; k++) {\n                if(i\
+    \ >> k & 1) {\n                    j |= 1 << (d - 1 - k);\n                }\n\
+    \            }\n            if(i < j) {\n                std::swap(a[i], a[j]);\n\
+    \            }\n        }\n        for(int i = 0; i < d; i++) {\n            int\
+    \ m = 1 << i;\n            mint<mod> w = 1, wn = (inv ? inv_root : root)[i];\n\
+    \            for(int j = 0; j < m; j++) {\n                for(int k = 0; k <\
+    \ n; k += m << 1) {\n                    mint<mod> s = a[j | k], t = w * a[j |\
+    \ k | m];\n                    a[j | k] = s + t;\n                    a[j | k\
+    \ | m] = s - t;\n                }\n                w *= wn;\n            }\n\
+    \        }\n        return a;\n    }\n\n    int pr;\n    int depth;\n    std::vector<mint<mod>>\
     \ root, inv_root;\n};\n\n}"
   dependsOn:
   - lib/math/ModInt/mint.hpp
   isVerificationFile: false
   path: lib/convolution/convolution.hpp
   requiredBy: []
-  timestamp: '2024-05-08 23:10:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/convolution/convolution/yosupo_convolution_mod.test.cpp
+  timestamp: '2024-05-09 09:16:57+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: lib/convolution/convolution.hpp
 layout: document
 title: convolution

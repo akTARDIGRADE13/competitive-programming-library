@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: lib/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: lib/convolution/convolution.hpp
       title: convolution
   - name: lib/data_structure/BIT
@@ -44,7 +44,7 @@ data:
   verificationCategories:
   - name: verify/convolution/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
       title: verify/convolution/convolution/yosupo_convolution_mod.test.cpp
   - name: verify/data_structure/BIT/BIT
