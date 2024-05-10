@@ -41,6 +41,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/math/ModInt/mint.hpp
       title: mint
+  - name: lib/math/number-theory
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/math/number-theory/extGCD.hpp
+      title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
   verificationCategories:
   - name: verify/convolution/convolution
     pages:
@@ -96,6 +101,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/math/ModInt/d_mint/binomial_coefficient_prime_mod.test.cpp
       title: verify/math/ModInt/d_mint/binomial_coefficient_prime_mod.test.cpp
+  - name: verify/math/number-theory
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/math/number-theory/AOJ.test.cpp
+      title: verify/math/number-theory/AOJ.test.cpp
 layout: toppage
 ---
 [![tardigrade](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Ftardigrade)](https://atcoder.jp/users/tardigrade)
