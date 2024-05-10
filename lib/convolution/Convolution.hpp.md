@@ -72,17 +72,17 @@ data:
     \        int width = n;\n        int offset = width >> 1;\n        while(width\
     \ > 1) {\n            mint<mod> w = get_root(width);\n            for(int top\
     \ = 0; top < n; top += width) {\n                mint<mod> ws = 1;\n         \
-    \       for(int i = top; i < top + offset; i++) {\n                    mint<mod>\
-    \ s = a[i];\n                    mint<mod> t = a[i + offset];\n              \
-    \      a[i] = s + t;\n                    a[i + offset] = (s - t) * ws;\n    \
+    \       for(int i = top; i < (top | offset); i++) {\n                    mint<mod>\
+    \ s = a[i];\n                    mint<mod> t = a[i | offset];\n              \
+    \      a[i] = s + t;\n                    a[i | offset] = (s - t) * ws;\n    \
     \                ws *= w;\n                }\n            }\n            width\
     \ >>= 1;\n            offset >>= 1;\n        }\n    }\n\n    void intt(std::vector<mint<mod>>\
     \ &a) {\n        int n = a.size();\n        int width = 2;\n        int offset\
     \ = 1;\n        while(width <= n) {\n            mint<mod> w = get_root(width).inv();\n\
     \            for(int top = 0; top < n; top += width) {\n                mint<mod>\
-    \ ws = 1;\n                for(int i = top; i < top + offset; i++) {\n       \
-    \             mint<mod> s = a[i];\n                    mint<mod> t = a[i + offset]\
-    \ * ws;\n                    a[i] = s + t;\n                    a[i + offset]\
+    \ ws = 1;\n                for(int i = top; i < (top | offset); i++) {\n     \
+    \               mint<mod> s = a[i];\n                    mint<mod> t = a[i | offset]\
+    \ * ws;\n                    a[i] = s + t;\n                    a[i | offset]\
     \ = s - t;\n                    ws *= w;\n                }\n            }\n \
     \           width <<= 1;\n            offset <<= 1;\n        }\n        mint<mod>\
     \ inv = mint<mod>(n).inv();\n        for(auto &i : a) {\n            i *= inv;\n\
@@ -115,17 +115,17 @@ data:
     \        int width = n;\n        int offset = width >> 1;\n        while(width\
     \ > 1) {\n            mint<mod> w = get_root(width);\n            for(int top\
     \ = 0; top < n; top += width) {\n                mint<mod> ws = 1;\n         \
-    \       for(int i = top; i < top + offset; i++) {\n                    mint<mod>\
-    \ s = a[i];\n                    mint<mod> t = a[i + offset];\n              \
-    \      a[i] = s + t;\n                    a[i + offset] = (s - t) * ws;\n    \
+    \       for(int i = top; i < (top | offset); i++) {\n                    mint<mod>\
+    \ s = a[i];\n                    mint<mod> t = a[i | offset];\n              \
+    \      a[i] = s + t;\n                    a[i | offset] = (s - t) * ws;\n    \
     \                ws *= w;\n                }\n            }\n            width\
     \ >>= 1;\n            offset >>= 1;\n        }\n    }\n\n    void intt(std::vector<mint<mod>>\
     \ &a) {\n        int n = a.size();\n        int width = 2;\n        int offset\
     \ = 1;\n        while(width <= n) {\n            mint<mod> w = get_root(width).inv();\n\
     \            for(int top = 0; top < n; top += width) {\n                mint<mod>\
-    \ ws = 1;\n                for(int i = top; i < top + offset; i++) {\n       \
-    \             mint<mod> s = a[i];\n                    mint<mod> t = a[i + offset]\
-    \ * ws;\n                    a[i] = s + t;\n                    a[i + offset]\
+    \ ws = 1;\n                for(int i = top; i < (top | offset); i++) {\n     \
+    \               mint<mod> s = a[i];\n                    mint<mod> t = a[i | offset]\
+    \ * ws;\n                    a[i] = s + t;\n                    a[i | offset]\
     \ = s - t;\n                    ws *= w;\n                }\n            }\n \
     \           width <<= 1;\n            offset <<= 1;\n        }\n        mint<mod>\
     \ inv = mint<mod>(n).inv();\n        for(auto &i : a) {\n            i *= inv;\n\
@@ -136,13 +136,13 @@ data:
   isVerificationFile: false
   path: lib/convolution/Convolution.hpp
   requiredBy: []
-  timestamp: '2024-05-09 12:41:26+09:00'
+  timestamp: '2024-05-09 14:49:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/convolution/convolution/yosupo_convolution_mod.test.cpp
 documentation_of: lib/convolution/Convolution.hpp
 layout: document
-title: convolution
+title: Convolution
 ---
 
 ## 概要

@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: lib/convolution/Convolution.hpp
-    title: convolution
+    title: Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/convolution/convolution/yosupo_convolution_mod.test.cpp

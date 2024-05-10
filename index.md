@@ -5,7 +5,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: lib/convolution/Convolution.hpp
-      title: convolution
+      title: Convolution
   - name: lib/data_structure/BIT
     pages:
     - icon: ':heavy_check_mark:'
