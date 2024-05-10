@@ -10,5 +10,6 @@
 "verify/data_structure/Unionfind/PotentializedUnionfind/AOJ.test.cpp": "2024-03-09 20:54:29 +0900",
 "verify/data_structure/Unionfind/UndoUnionfind/yosupo_persistent_unionfind.test.cpp": "2024-03-09 21:04:33 +0900",
 "verify/data_structure/Unionfind/Unionfind/yosupo_unionfind.test.cpp": "2024-03-09 20:53:11 +0900",
-"verify/math/ModInt/d_mint/binomial_coefficient_prime_mod.test.cpp": "2024-03-17 09:36:27 +0900"
+"verify/math/ModInt/d_mint/binomial_coefficient_prime_mod.test.cpp": "2024-03-17 09:36:27 +0900",
+"verify/math/number-theory/AOJ.test.cpp": "2024-05-09 18:22:15 +0900"
 }
