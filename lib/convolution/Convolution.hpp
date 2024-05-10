@@ -82,11 +82,11 @@ private:
             mint<mod> w = get_root(width);
             for(int top = 0; top < n; top += width) {
                 mint<mod> ws = 1;
-                for(int i = top; i < (top | offset); i++) {
+                for(int i = top; i < (top + offset); i++) {
                     mint<mod> s = a[i];
-                    mint<mod> t = a[i | offset];
+                    mint<mod> t = a[i + offset];
                     a[i] = s + t;
-                    a[i | offset] = (s - t) * ws;
+                    a[i + offset] = (s - t) * ws;
                     ws *= w;
                 }
             }
@@ -103,11 +103,11 @@ private:
             mint<mod> w = get_root(width).inv();
             for(int top = 0; top < n; top += width) {
                 mint<mod> ws = 1;
-                for(int i = top; i < (top | offset); i++) {
+                for(int i = top; i < (top + offset); i++) {
                     mint<mod> s = a[i];
-                    mint<mod> t = a[i | offset] * ws;
+                    mint<mod> t = a[i + offset] * ws;
                     a[i] = s + t;
-                    a[i | offset] = s - t;
+                    a[i + offset] = s - t;
                     ws *= w;
                 }
             }
