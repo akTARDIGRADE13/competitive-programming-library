@@ -39,4 +39,4 @@ title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5
 
 ## 使い方
 
-- `extGCD<T>(T a, T b, T &x, T &y)`：$gcd(a, b)$ を返す．$x$ と $y$ には $ax+by=gcd(a,b)$ を満たす値が代入される．$|x|+|y|$ が最小となる値が代入される．計算量$\mathrm{O}(\log min(a, b))$
+- `extGCD<T>(T a, T b, T &x, T &y)`：$gcd(a, b)$ を返す．$x$ と $y$ には $ax+by=gcd(a,b)$ を満たす値が代入される．$abs(x)+abs(y)$ が最小となる値が代入される．計算量$\mathrm{O}(\log min(a, b))$
